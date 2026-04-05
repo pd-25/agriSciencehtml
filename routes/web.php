@@ -1,0 +1,17 @@
+<?php
+
+use App\Http\Controllers\Frontend\IndexController;
+use Illuminate\Support\Facades\Route;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [IndexController::class, 'index'])->name('home');
+
+Route::get('/about', [IndexController::class, 'about'])->name('about');
+Route::get('/articles', [IndexController::class, 'articles'])->name('articles');
+Route::get('/contactus', [IndexController::class, 'contactus'])->name('contactus');
+Route::get('/researches', [IndexController::class, 'researches'])->name('researches');
+Route::get('/services', [IndexController::class, 'services'])->name('services');
+require __DIR__ . '/admin.php';
