@@ -43,6 +43,8 @@
             border-right: 1px solid rgba(0, 0, 0, 0.05);
             z-index: 1000;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         /* Content Area Styling */
