@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\WhatWeDoController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -22,6 +23,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/members', [AdminController::class, 'memberstore'])->name('members.store');
         Route::put('/members/{member}', [AdminController::class, 'memberUpdate'])->name('members.update');
         Route::delete('/members/{member}', [AdminController::class, 'memberDelete'])->name('members.delete');
+        
+        // What we do
+        Route::get('/whatwedo', [WhatWeDoController::class, 'index'])->name('whatwedo.index');
+        Route::post('/whatwedo', [WhatWeDoController::class, 'store'])->name('whatwedo.store');
+        Route::put('/whatwedo/{id}', [WhatWeDoController::class, 'update'])->name('whatwedo.update');
+        Route::delete('/whatwedo/{id}', [WhatWeDoController::class, 'destroy'])->name('whatwedo.destroy');
 
          // Partners
         Route::get('/partners', [AdminController::class, 'partnersList'])->name('partners.index');

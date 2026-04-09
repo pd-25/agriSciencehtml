@@ -24,8 +24,8 @@
                 style="font-size: 0.7rem; letter-spacing: 1px;">Content</p>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.whatwedo.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.whatwedo.index') }}">
                     <i class="fa fa-briefcase me-3" style="width: 20px;"></i>
                     <span class="fw-medium">What We Do</span>
                 </a>
