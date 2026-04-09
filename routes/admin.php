@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\OurPurposeController;
+use App\Http\Controllers\Admin\ResearchController;
+use App\Http\Controllers\Admin\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -23,20 +26,39 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/members', [AdminController::class, 'memberstore'])->name('members.store');
         Route::put('/members/{member}', [AdminController::class, 'memberUpdate'])->name('members.update');
         Route::delete('/members/{member}', [AdminController::class, 'memberDelete'])->name('members.delete');
-        
+
         // What we do
         Route::get('/whatwedo', [WhatWeDoController::class, 'index'])->name('whatwedo.index');
         Route::post('/whatwedo', [WhatWeDoController::class, 'store'])->name('whatwedo.store');
         Route::put('/whatwedo/{id}', [WhatWeDoController::class, 'update'])->name('whatwedo.update');
         Route::delete('/whatwedo/{id}', [WhatWeDoController::class, 'destroy'])->name('whatwedo.destroy');
 
-         // Partners
+        // Service
+        Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
+        Route::post('/service', [ServiceController::class, 'store'])->name('service.store');
+        Route::put('/service/{id}', [ServiceController::class, 'update'])->name('service.update');
+        Route::delete('/service/{id}', [ServiceController::class, 'destroy'])->name('service.destroy');
+
+        // Our Purpose
+        Route::get('/ourpurpose', [OurPurposeController::class, 'index'])->name('ourpurpose.index');
+        Route::post('/ourpurpose', [OurPurposeController::class, 'store'])->name('ourpurpose.store');
+        Route::put('/ourpurpose/{id}', [OurPurposeController::class, 'update'])->name('ourpurpose.update');
+        Route::delete('/ourpurpose/{id}', [OurPurposeController::class, 'destroy'])->name('ourpurpose.destroy');
+
+        // Research
+        Route::get('/research', [ResearchController::class, 'index'])->name('research.index');
+        Route::post('/research', [ResearchController::class, 'store'])->name('research.store');
+        Route::put('/research/{id}', [ResearchController::class, 'update'])->name('research.update');
+        Route::delete('/research/{id}', [ResearchController::class, 'destroy'])->name('research.destroy');
+
+
+        // Partners
         Route::get('/partners', [AdminController::class, 'partnersList'])->name('partners.index');
         Route::post('/partners', [AdminController::class, 'partnerstore'])->name('partners.store');
         Route::put('/partners/{partner}', [AdminController::class, 'partnerUpdate'])->name('partners.update');
         Route::delete('/partners/{partner}', [AdminController::class, 'partnerDelete'])->name('partners.delete');
 
-         // Lead
+        // Lead
         Route::get('/leads', [AdminController::class, 'leadsList'])->name('leads.index');
         Route::post('/leads', [AdminController::class, 'leadstore'])->name('leads.store');
         Route::put('/leads/{lead}', [AdminController::class, 'leadUpdate'])->name('leads.update');
@@ -72,13 +94,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/site-setting', [AdminController::class, 'siteSettingUpdate'])->name('site-setting');
 
 
-                // Faq
+        // Faq
         Route::get('/faqs', [AdminController::class, 'faqsList'])->name('faqs.index');
         Route::post('/faqs', [AdminController::class, 'faqstore'])->name('faqs.store');
         Route::put('/faqs/{faq}', [AdminController::class, 'faqUpdate'])->name('faqs.update');
         Route::delete('/faqs/{faq}', [AdminController::class, 'faqDelete'])->name('faqs.delete');
 
-               // Testimonials
+        // Testimonials
         Route::get('/testimonials', [AdminController::class, 'testimonialsList'])->name('testimonials.index');
         Route::post('/testimonials', [AdminController::class, 'testimonialstore'])->name('testimonials.store');
         Route::put('/testimonials/{testimonial}', [AdminController::class, 'testimonialUpdate'])->name('testimonials.update');

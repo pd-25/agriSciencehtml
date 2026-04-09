@@ -43,8 +43,8 @@
                 style="font-size: 0.7rem; letter-spacing: 1px;">Services</p>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.service.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.service.index') }}">
                     <i class="fa fa-cogs me-3" style="width: 20px;"></i>
                     <span class="fw-medium">Services</span>
                 </a>
@@ -62,8 +62,8 @@
                 style="font-size: 0.7rem; letter-spacing: 1px;">Research</p>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.research.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.research.index') }}">
                     <i class="fa fa-flask me-3" style="width: 20px;"></i>
                     <span class="fw-medium">Our Research</span>
                 </a>
@@ -126,8 +126,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.ourpurpose.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.ourpurpose.index') }}">
                     <i class="fa fa-bullseye me-3" style="width: 20px;"></i>
                     <span class="fw-medium">Our Purpose</span>
                 </a>
