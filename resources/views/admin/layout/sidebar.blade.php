@@ -134,8 +134,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.abouts.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.abouts.index') }}">
                     <i class="fa fa-leaf me-3" style="width: 20px;"></i>
                     <span class="fw-medium">About Agriscience</span>
                 </a>
