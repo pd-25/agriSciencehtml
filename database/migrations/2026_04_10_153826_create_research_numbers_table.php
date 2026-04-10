@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('research_numbers', function (Blueprint $table) {
             $table->id();
+            $table->string('published_papers');
+            $table->string('research_partners');
+            $table->string('field_studies');
+            $table->string('open_access_downloads');
             $table->timestamps();
         });
     }

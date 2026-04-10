@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ResearchController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ImpactNumbersController;
 use App\Http\Controllers\Admin\ApproachController;
+use App\Http\Controllers\Admin\ResearchNumberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -118,5 +119,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/approach', [ApproachController::class, 'store'])->name('approach.store');
         Route::put('/approach/{id}', [ApproachController::class, 'update'])->name('approach.update');
         Route::delete('/approach/{id}', [ApproachController::class, 'destroy'])->name('approach.destroy');
+
+        // Research Numbers
+        Route::get('/research-numbers', [ResearchNumberController::class, 'index'])->name('research-numbers.index');
+        Route::post('/research-numbers', [ResearchNumberController::class, 'store'])->name('research-numbers.store');
+        Route::put('/research-numbers/{id}', [ResearchNumberController::class, 'update'])->name('research-numbers.update');
     });
 });
