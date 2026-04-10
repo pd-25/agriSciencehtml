@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ApproachController;
 use App\Http\Controllers\Admin\ResearchNumberController;
 use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\JourneyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -138,5 +139,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
         Route::put('/teams/{id}', [TeamController::class, 'update'])->name('teams.update');
         Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->name('teams.destroy');
+
+        // Journeys
+        Route::get('/journeys', [JourneyController::class, 'index'])->name('journeys.index');
+        Route::post('/journeys', [JourneyController::class, 'store'])->name('journeys.store');
+        Route::put('/journeys/{id}', [JourneyController::class, 'update'])->name('journeys.update');
+        Route::delete('/journeys/{id}', [JourneyController::class, 'destroy'])->name('journeys.destroy');
     });
 });

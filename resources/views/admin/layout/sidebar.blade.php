@@ -118,8 +118,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.journeys.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.journeys.index') }}">
                     <i class="fa fa-route me-3" style="width: 20px;"></i>
                     <span class="fw-medium">Our Journey</span>
                 </a>
