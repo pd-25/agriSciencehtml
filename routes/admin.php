@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\JourneyController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\FAQController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -104,10 +105,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
         // Faq
-        Route::get('/faqs', [AdminController::class, 'faqsList'])->name('faqs.index');
-        Route::post('/faqs', [AdminController::class, 'faqstore'])->name('faqs.store');
-        Route::put('/faqs/{faq}', [AdminController::class, 'faqUpdate'])->name('faqs.update');
-        Route::delete('/faqs/{faq}', [AdminController::class, 'faqDelete'])->name('faqs.delete');
+        Route::get('/faqs', [FAQController::class, 'index'])->name('faqs.index');
+        Route::post('/faqs', [FAQController::class, 'store'])->name('faqs.store');
+        Route::put('/faqs/{faq}', [FAQController::class, 'update'])->name('faqs.update');
+        Route::delete('/faqs/{faq}', [FAQController::class, 'destroy'])->name('faqs.destroy');
 
 
 
