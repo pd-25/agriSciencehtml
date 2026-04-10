@@ -145,8 +145,8 @@
                 style="font-size: 0.7rem; letter-spacing: 1px;">Testimonials</p>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.testimonials.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.testimonials.index') }}">
                     <i class="fa fa-comments me-3" style="width: 20px;"></i>
                     <span class="fw-medium">Testimonials</span>
                 </a>

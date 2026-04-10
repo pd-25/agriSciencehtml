@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\JourneyController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -107,11 +108,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/faqs/{faq}', [AdminController::class, 'faqUpdate'])->name('faqs.update');
         Route::delete('/faqs/{faq}', [AdminController::class, 'faqDelete'])->name('faqs.delete');
 
-        // Testimonials
-        Route::get('/testimonials', [AdminController::class, 'testimonialsList'])->name('testimonials.index');
-        Route::post('/testimonials', [AdminController::class, 'testimonialstore'])->name('testimonials.store');
-        Route::put('/testimonials/{testimonial}', [AdminController::class, 'testimonialUpdate'])->name('testimonials.update');
-        Route::delete('/testimonials/{testimonial}', [AdminController::class, 'testimonialDelete'])->name('testimonials.delete');
+
 
         // Impact Numbers
         Route::get('/impact-numbers', [ImpactNumbersController::class, 'index'])->name('impactnumbers.index');
@@ -151,5 +148,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/abouts', [AboutController::class, 'index'])->name('abouts.index');
         Route::post('/abouts', [AboutController::class, 'store'])->name('abouts.store');
         Route::put('/abouts/{id}', [AboutController::class, 'update'])->name('abouts.update');
+
+        // Testimonials
+        Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+        Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
+        Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
+        Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
     });
 });
