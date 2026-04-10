@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ImpactNumbersController;
 use App\Http\Controllers\Admin\ApproachController;
 use App\Http\Controllers\Admin\ResearchNumberController;
 use App\Http\Controllers\Admin\PublicationController;
+use App\Http\Controllers\Admin\TeamController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -131,5 +132,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/publications', [PublicationController::class, 'store'])->name('publications.store');
         Route::put('/publications/{id}', [PublicationController::class, 'update'])->name('publications.update');
         Route::delete('/publications/{id}', [PublicationController::class, 'destroy'])->name('publications.destroy');
+
+        // Teams
+        Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+        Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
+        Route::put('/teams/{id}', [TeamController::class, 'update'])->name('teams.update');
+        Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->name('teams.destroy');
     });
 });
