@@ -88,8 +88,8 @@
                 style="font-size: 0.7rem; letter-spacing: 1px;">Blogs</p>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.blogs.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.blogs.index') }}">
                     <i class="fa fa-blog me-3" style="width: 20px;"></i>
                     <span class="fw-medium">Blogs</span>
                 </a>

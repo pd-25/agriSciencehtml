@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\JourneyController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -154,5 +155,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
         Route::put('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonials.update');
         Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
+
+        // Blogs
+        Route::resource('blogs', BlogController::class);
     });
 });
