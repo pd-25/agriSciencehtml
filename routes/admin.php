@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ImpactNumbersController;
 use App\Http\Controllers\Admin\ApproachController;
 use App\Http\Controllers\Admin\ResearchNumberController;
+use App\Http\Controllers\Admin\PublicationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -124,5 +125,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/research-numbers', [ResearchNumberController::class, 'index'])->name('research-numbers.index');
         Route::post('/research-numbers', [ResearchNumberController::class, 'store'])->name('research-numbers.store');
         Route::put('/research-numbers/{id}', [ResearchNumberController::class, 'update'])->name('research-numbers.update');
+
+        // Publications
+        Route::get('/publications', [PublicationController::class, 'index'])->name('publications.index');
+        Route::post('/publications', [PublicationController::class, 'store'])->name('publications.store');
+        Route::put('/publications/{id}', [PublicationController::class, 'update'])->name('publications.update');
+        Route::delete('/publications/{id}', [PublicationController::class, 'destroy'])->name('publications.destroy');
     });
 });
