@@ -34,15 +34,33 @@ class AboutController extends Controller
             'linkedin' => 'nullable|url|max:255',
             'instagram' => 'nullable|url|max:255',
             'youtube' => 'nullable|url|max:255',
+            'phone' => 'nullable|array',
+            'phone.*' => 'nullable|string|max:20',
+            'email' => 'nullable|array',
+            'email.*' => 'nullable|email|max:255',
+            'address' => 'nullable|string|max:500',
+            'regional_offices' => 'nullable|array',
+            'regional_offices.*.name' => 'nullable|string|max:255',
+            'regional_offices.*.address' => 'nullable|string|max:500',
+            'regional_offices.*.email' => 'nullable|email|max:255',
         ]);
 
-        $data = $request->except('_token', 'image', 'list_items');
+        $data = $request->except('_token', 'image', 'list_items', 'phone', 'email', 'regional_offices');
         
-        // Clean up list items to filter out empty ones
-        if ($request->has('list_items')) {
-            $data['list_items'] = array_filter($request->list_items, function($val) {
-                return !is_null($val) && trim($val) !== '';
-            });
+        // Clean up simple array fields
+        foreach (['list_items', 'phone', 'email'] as $field) {
+            if ($request->has($field)) {
+                $data[$field] = array_values(array_filter($request->input($field), function($val) {
+                    return !is_null($val) && trim($val) !== '';
+                }));
+            }
+        }
+
+        // Clean up multi-field array (regional offices)
+        if ($request->has('regional_offices')) {
+            $data['regional_offices'] = array_values(array_filter($request->regional_offices, function($office) {
+                return !empty($office['name']) && !empty($office['address']);
+            }));
         }
 
         if ($request->hasFile('image')) {
@@ -73,18 +91,38 @@ class AboutController extends Controller
             'linkedin' => 'nullable|url|max:255',
             'instagram' => 'nullable|url|max:255',
             'youtube' => 'nullable|url|max:255',
+            'phone' => 'nullable|array',
+            'phone.*' => 'nullable|string|max:20',
+            'email' => 'nullable|array',
+            'email.*' => 'nullable|email|max:255',
+            'address' => 'nullable|string|max:500',
+            'regional_offices' => 'nullable|array',
+            'regional_offices.*.name' => 'nullable|string|max:255',
+            'regional_offices.*.address' => 'nullable|string|max:500',
+            'regional_offices.*.email' => 'nullable|email|max:255',
         ]);
 
         $about = \App\Models\About::findOrFail($id);
-        $data = $request->except('_token', 'image', 'list_items');
+        $data = $request->except('_token', 'image', 'list_items', 'phone', 'email', 'regional_offices');
 
-        // Clean up list items to filter out empty ones
-        if ($request->has('list_items')) {
-            $data['list_items'] = array_values(array_filter($request->list_items, function($val) {
-                return !is_null($val) && trim($val) !== '';
+        // Clean up simple array fields
+        foreach (['list_items', 'phone', 'email'] as $field) {
+            if ($request->has($field)) {
+                $data[$field] = array_values(array_filter($request->input($field), function($val) {
+                    return !is_null($val) && trim($val) !== '';
+                }));
+            } else {
+                $data[$field] = null;
+            }
+        }
+
+        // Clean up multi-field array (regional offices)
+        if ($request->has('regional_offices')) {
+            $data['regional_offices'] = array_values(array_filter($request->regional_offices, function($office) {
+                return !empty($office['name']) && !empty($office['address']);
             }));
         } else {
-            $data['list_items'] = null;
+            $data['regional_offices'] = null;
         }
 
         if ($request->hasFile('image')) {

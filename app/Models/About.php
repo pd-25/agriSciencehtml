@@ -22,9 +22,16 @@ class About extends Model
         'linkedin',
         'instagram',
         'youtube',
+        'phone',
+        'email',
+        'address',
+        'regional_offices',
     ];
 
     protected $casts = [
         'list_items' => 'array',
+        'phone' => 'array',
+        'email' => 'array',
+        'regional_offices' => 'array',
     ];
 }
