@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\OurPurposeController;
 use App\Http\Controllers\Admin\ResearchController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ImpactNumbersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -105,5 +106,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/testimonials', [AdminController::class, 'testimonialstore'])->name('testimonials.store');
         Route::put('/testimonials/{testimonial}', [AdminController::class, 'testimonialUpdate'])->name('testimonials.update');
         Route::delete('/testimonials/{testimonial}', [AdminController::class, 'testimonialDelete'])->name('testimonials.delete');
+
+        // Impact Numbers
+        Route::get('/impact-numbers', [ImpactNumbersController::class, 'index'])->name('impactnumbers.index');
+        Route::post('/impact-numbers', [ImpactNumbersController::class, 'store'])->name('impactnumbers.store');
+        Route::put('/impact-numbers/{id}', [ImpactNumbersController::class, 'update'])->name('impactnumbers.update');
     });
 });
