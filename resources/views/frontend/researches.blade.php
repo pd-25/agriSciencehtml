@@ -147,7 +147,7 @@
   </section>
 
   <!-- Data / Key Insights -->
-  <section class="impact-section section-padding">
+  <!-- <section class="impact-section section-padding">
     <div class="container">
       <div class="text-center mb-5 reveal">
         <span class="section-badge" style="background:rgba(255,255,255,.12);color:#fff;">Key Findings</span>
@@ -180,10 +180,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Research Partners -->
-  <section class="section-padding">
+  <!-- <section class="section-padding">
     <div class="container text-center reveal">
       <span class="section-badge">Collaborations</span>
       <h2 class="section-title mb-5">Our Research Partners</h2>
@@ -196,7 +196,7 @@
         <div class="partner-logo">UC Davis</div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- CTA -->
   <section class="cta-section section-padding-sm">
