@@ -8,6 +8,8 @@ use App\Models\Approach;
 use App\Models\ImpactNumbers;
 use App\Models\Journey;
 use App\Models\OurPurpose;
+use App\Models\Publication;
+use App\Models\Research;
 use App\Models\ResearchNumber;
 use App\Models\Service;
 use App\Models\Team;
@@ -47,7 +49,10 @@ class IndexController extends Controller
 
     public function researches()
     {
-        return view('frontend.researches');
+        $numbers = ResearchNumber::get()->first();
+        $researches = Research::get();
+        $publications = Publication::get();
+        return view('frontend.researches', compact('numbers', 'researches', 'publications'));
     }
 
     public function services()

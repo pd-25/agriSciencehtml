@@ -22,28 +22,28 @@
           <div class="contact-card">
             <div class="icon-circle green mx-auto"><i class="bi bi-journal-richtext"></i></div>
             <h6>Published Papers</h6>
-            <p style="font-size:1.8rem;font-weight:800;color:var(--primary);font-family:'Inter',sans-serif;">120+</p>
+            <p style="font-size:1.8rem;font-weight:800;color:var(--primary);font-family:'Inter',sans-serif;">{{ $numbers->published_papers }}+</p>
           </div>
         </div>
         <div class="col-6 col-lg-3">
           <div class="contact-card">
             <div class="icon-circle orange mx-auto"><i class="bi bi-people"></i></div>
             <h6>Research Partners</h6>
-            <p style="font-size:1.8rem;font-weight:800;color:var(--accent);font-family:'Inter',sans-serif;">45</p>
+            <p style="font-size:1.8rem;font-weight:800;color:var(--accent);font-family:'Inter',sans-serif;">{{ $numbers->research_partners }}</p>
           </div>
         </div>
         <div class="col-6 col-lg-3">
           <div class="contact-card">
             <div class="icon-circle teal mx-auto"><i class="bi bi-globe2"></i></div>
             <h6>Field Studies</h6>
-            <p style="font-size:1.8rem;font-weight:800;color:#009688;font-family:'Inter',sans-serif;">85+</p>
+            <p style="font-size:1.8rem;font-weight:800;color:#009688;font-family:'Inter',sans-serif;">{{ $numbers->field_studies }}+</p>
           </div>
         </div>
         <div class="col-6 col-lg-3">
           <div class="contact-card">
             <div class="icon-circle blue mx-auto"><i class="bi bi-download"></i></div>
             <h6>Open Access Downloads</h6>
-            <p style="font-size:1.8rem;font-weight:800;color:#2196f3;font-family:'Inter',sans-serif;">500K+</p>
+            <p style="font-size:1.8rem;font-weight:800;color:#2196f3;font-family:'Inter',sans-serif;">{{ $numbers->open_access_downloads }}+</p>
           </div>
         </div>
       </div>
@@ -59,14 +59,16 @@
         <p class="section-subtitle mx-auto">AgriScience research spans five critical domains that together address the full complexity of agricultural sustainability.</p>
       </div>
       <div class="row g-4">
+        @foreach($researches as $item)
         <div class="col-md-6 col-lg-4 reveal">
           <div class="icon-card">
-            <div class="icon-circle green"><i class="bi bi-moisture"></i></div>
-            <h5>Soil Health & Regeneration</h5>
-            <p>Investigating microbiome dynamics, carbon sequestration, and regenerative practices to restore degraded agricultural soils across tropical and arid regions.</p>
+            <div class="icon-circle {{ $item->color }}"><i class="{{ $item->icon }}"></i></div>
+            <h5>{{ $item->title }}</h5>
+            <p>{{ $item->description }}</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
+        @endforeach
+        <!-- <div class="col-md-6 col-lg-4 reveal">
           <div class="icon-card">
             <div class="icon-circle orange"><i class="bi bi-thermometer-sun"></i></div>
             <h5>Climate Adaptation</h5>
@@ -100,7 +102,7 @@
             <h5>Agricultural Economics</h5>
             <p>Analyzing market structures, policy impacts, and livelihood data to advocate for evidence-based agricultural reform and fair trade practices.</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -122,78 +124,20 @@
       </div>
 
       <div class="row g-4">
-        <div class="col-md-6 reveal filterable-card" data-category="paper">
+        @foreach($publications as $pub)
+        <div class="col-md-6 reveal filterable-card" data-category="{{ $pub->category }}">
           <div class="research-card">
-            <span class="research-type paper">Peer-Reviewed Paper</span>
-            <h5>Impact of Biochar Amendment on Soil Carbon Sequestration in Semi-Arid Tropical Farmlands</h5>
-            <p>A 3-year longitudinal study measuring the effects of biochar application on soil organic carbon across 120 farm plots in Rajasthan, India.</p>
+            <span class="research-type {{ $pub->category }}">{{ $pub->type_label }}</span>
+            <h5>{{ $pub->title }}</h5>
+            <p>{{ $pub->description }}</p>
             <div class="meta-row">
-              <span><i class="bi bi-person"></i> Dr. V. Patel, Dr. L. Ochieng et al.</span>
-              <span><i class="bi bi-calendar3"></i> March 2026</span>
-              <span><i class="bi bi-journal"></i> Nature Sustainability</span>
+              <span><i class="bi bi-person"></i> {{ $pub->author }}</span>
+              <span><i class="bi bi-calendar3"></i> {{ $pub->date }}</span>
+              <span><i class="{{ $pub->source_icon }}"></i> {{ $pub->source_info }}</span>
             </div>
           </div>
         </div>
-        <div class="col-md-6 reveal filterable-card" data-category="report">
-          <div class="research-card">
-            <span class="research-type report">Annual Report</span>
-            <h5>State of Smallholder Agriculture 2025: Challenges, Innovations, and the Path Forward</h5>
-            <p>Our comprehensive annual report analyzing trends, challenges, and opportunities across smallholder farming systems in 28 countries.</p>
-            <div class="meta-row">
-              <span><i class="bi bi-person"></i> AgriScience Research Team</span>
-              <span><i class="bi bi-calendar3"></i> February 2026</span>
-              <span><i class="bi bi-file-earmark-pdf"></i> 84 pages</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 reveal filterable-card" data-category="study">
-          <div class="research-card">
-            <span class="research-type study">Field Study</span>
-            <h5>Evaluating Drip Irrigation Adoption Rates and Yield Outcomes Among Women Farmers in East Africa</h5>
-            <p>A mixed-methods study examining the socioeconomic factors influencing irrigation technology adoption and its impact on women-led farms.</p>
-            <div class="meta-row">
-              <span><i class="bi bi-person"></i> A. Siddiqui, M. Chen</span>
-              <span><i class="bi bi-calendar3"></i> January 2026</span>
-              <span><i class="bi bi-geo-alt"></i> Kenya, Tanzania</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 reveal filterable-card" data-category="paper">
-          <div class="research-card">
-            <span class="research-type paper">Peer-Reviewed Paper</span>
-            <h5>Machine Learning Models for Early Detection of Crop Disease Using Low-Cost Smartphone Imaging</h5>
-            <p>Developing accessible AI-powered diagnostic tools that enable farmers to identify plant diseases using only a smartphone camera.</p>
-            <div class="meta-row">
-              <span><i class="bi bi-person"></i> Dr. R. Gupta, Dr. T. Nakamura</span>
-              <span><i class="bi bi-calendar3"></i> December 2025</span>
-              <span><i class="bi bi-journal"></i> Computers & Electronics in Ag.</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 reveal filterable-card" data-category="report">
-          <div class="research-card">
-            <span class="research-type report">Policy Brief</span>
-            <h5>Financing the Future: A Framework for Climate-Responsive Agricultural Investment in LMICs</h5>
-            <p>Policy recommendations for multilateral development banks and national governments on directing climate finance toward smallholder adaptation.</p>
-            <div class="meta-row">
-              <span><i class="bi bi-person"></i> Dr. V. Patel, M. Chen</span>
-              <span><i class="bi bi-calendar3"></i> November 2025</span>
-              <span><i class="bi bi-file-earmark-pdf"></i> 32 pages</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 reveal filterable-card" data-category="study">
-          <div class="research-card">
-            <span class="research-type study">Field Study</span>
-            <h5>Comparative Analysis of Traditional vs. Scientific Composting Methods in Vietnamese Rice Paddies</h5>
-            <p>A controlled study comparing nutrient profiles, microbial activity, and crop yields between indigenous composting practices and modern techniques.</p>
-            <div class="meta-row">
-              <span><i class="bi bi-person"></i> Dr. P. Tran, Dr. L. Ochieng</span>
-              <span><i class="bi bi-calendar3"></i> October 2025</span>
-              <span><i class="bi bi-geo-alt"></i> Vietnam</span>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
 
       <div class="text-center mt-5 reveal">
@@ -261,7 +205,7 @@
         <div class="col-lg-7">
           <h2 class="section-title" style="font-size:2rem;">Collaborate With Us</h2>
           <p class="mb-4 opacity-75">We welcome research partnerships, data sharing, and collaborative fieldwork with institutions committed to agricultural sustainability.</p>
-          <a href="contactus.html" class="btn-agri-white"><i class="bi bi-envelope"></i> Propose a Collaboration</a>
+          <a href="{{ route('contactus') }}" class="btn-agri-white"><i class="bi bi-envelope"></i> Propose a Collaboration</a>
         </div>
       </div>
     </div>
