@@ -11,6 +11,7 @@ Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::get('/about', [IndexController::class, 'about'])->name('about');
 Route::get('/articles', [IndexController::class, 'articles'])->name('articles');
+Route::get('/articles/{slug}', [IndexController::class, 'blogShow'])->name('blogs.show');
 Route::get('/contactus', [IndexController::class, 'contactus'])->name('contactus');
 Route::get('/researches', [IndexController::class, 'researches'])->name('researches');
 Route::get('/services', [IndexController::class, 'services'])->name('services');

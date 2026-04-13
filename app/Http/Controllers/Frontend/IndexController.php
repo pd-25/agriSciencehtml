@@ -45,6 +45,13 @@ class IndexController extends Controller
         return view('frontend.articles', compact('featuredBlog', 'blogs'));
     }
 
+    public function blogShow($slug)
+    {
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        $recentBlogs = Blog::where('id', '!=', $blog->id)->orderBy('date', 'desc')->take(3)->get();
+        return view('frontend.blog_details', compact('blog', 'recentBlogs'));
+    }
+
     public function contactus()
     {
         return view('frontend.contactus');

@@ -1,4 +1,5 @@
 @extends('frontend.layout.main')
+@section('title', 'About Us')
 @section('content')
  <!-- Page Header -->
   <section class="page-header">
