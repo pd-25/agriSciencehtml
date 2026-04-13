@@ -93,14 +93,16 @@
         <p class="section-subtitle mx-auto">We bridge the gap between cutting-edge agricultural research and the communities that need it most.</p>
       </div>
       <div class="row g-4">
+        @foreach ($whatWeDo as $item)
         <div class="col-md-6 col-lg-4 reveal">
           <div class="icon-card">
-            <div class="icon-circle green"><i class="bi bi-flower1"></i></div>
-            <h5>Sustainable Farming</h5>
-            <p>Implementing climate-smart agricultural techniques that protect the environment while boosting productivity.</p>
+            <div class="icon-circle {{ $item->color }}"><i class="{{ $item->icon }}"></i></div>
+            <h5>{{ $item->title }}</h5>
+            <p>{{ $item->description }}</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
+        @endforeach
+        <!-- <div class="col-md-6 col-lg-4 reveal">
           <div class="icon-card">
             <div class="icon-circle orange"><i class="bi bi-mortarboard"></i></div>
             <h5>Farmer Education</h5>
@@ -134,7 +136,7 @@
             <h5>Food Security</h5>
             <p>Working to ensure reliable access to nutritious, affordable food across underserved populations.</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -149,25 +151,25 @@
       <div class="row g-4">
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="50000" data-suffix="+">0</h2>
+            <h2 data-count="{{ $impact->farmers_empowered }}" data-suffix="+">0</h2>
             <p>Farmers Empowered</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="120" data-suffix="+">0</h2>
+            <h2 data-count="{{ $impact->research_projects }}" data-suffix="+">0</h2>
             <p>Research Projects</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="28">0</h2>
+            <h2 data-count="{{ $impact->countries_active }}">0</h2>
             <p>Countries Active</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="350" data-suffix="+">0</h2>
+            <h2 data-count="{{ $impact->partner_organizations }}" data-suffix="+">0</h2>
             <p>Partner Organizations</p>
           </div>
         </div>
@@ -183,22 +185,21 @@
           <div class="about-visual">
             <div class="main-img img-placeholder" style="height:380px;"><i class="bi bi-image"></i></div>
             <div class="experience-badge">
-              <h3>12+</h3>
+              <h3>{{ $about->experience_years }}+</h3>
               <p>Years of Service</p>
             </div>
           </div>
         </div>
         <div class="col-lg-6 reveal">
           <span class="section-badge">About AgriScience</span>
-          <h2 class="section-title">Science-Driven Solutions for a Greener World</h2>
-          <p class="text-muted mb-4">Founded in 2014, AgriScience has been at the forefront of agricultural innovation, working hand-in-hand with farmers, researchers, and policymakers to build a more sustainable food future.</p>
+          <h2 class="section-title">{{ $about->title }}</h2>
+          <p class="text-muted mb-4">{{ $about -> description }}</p>
           <ul class="about-list">
-            <li><i class="bi bi-check2"></i> Evidence-based farming methods tailored to local ecosystems</li>
-            <li><i class="bi bi-check2"></i> Partnerships with leading agricultural universities worldwide</li>
-            <li><i class="bi bi-check2"></i> Open-access research publications for global knowledge sharing</li>
-            <li><i class="bi bi-check2"></i> Community-first approach in all project implementations</li>
+            @foreach ($about->list_items as $item)
+            <li><i class="bi bi-check2"></i> {{ $item }}</li>
+            @endforeach
           </ul>
-          <a href="aboutus.html" class="btn-agri mt-3"><i class="bi bi-arrow-right"></i> Learn More About Us</a>
+          <a href="{{ route('about') }}" class="btn-agri mt-3"><i class="bi bi-arrow-right"></i> Learn More About Us</a>
         </div>
       </div>
     </div>
@@ -212,20 +213,22 @@
         <h2 class="section-title">What Our Community Says</h2>
       </div>
       <div class="row g-4">
+        @foreach ($testimonials as $testimonial)
         <div class="col-md-6 col-lg-4 reveal">
           <div class="testimonial-card">
             <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"AgriScience's training program transformed how I manage my farm. My yields have increased by 35% and I'm now using completely organic methods."</p>
+            <p>{{ $testimonial->feedback }}</p>
             <div class="author">
-              <div class="author-avatar">RK</div>
+              <div class="author-avatar"><img src="{{ asset($testimonial->image) }}" alt=""></div>
               <div>
-                <h6>Rajesh Kumar</h6>
-                <span>Smallholder Farmer, India</span>
+                <h6>{{ $testimonial->name }}</h6>
+                <span>{{ $testimonial->designation }}</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
+        @endforeach
+        <!-- <div class="col-md-6 col-lg-4 reveal">
           <div class="testimonial-card">
             <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
             <p>"The water management solutions introduced by AgriScience saved our village during the worst drought in decades. Their approach is truly life-changing."</p>
@@ -250,7 +253,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -263,8 +266,8 @@
           <h2 class="section-title">Join Us in Building a<br>Sustainable Food Future</h2>
           <p class="mb-4 opacity-75" style="font-size:1.1rem;">Whether you're a farmer, researcher, donor, or volunteer — there's a place for you in the AgriScience community.</p>
           <div class="d-flex flex-wrap gap-3 justify-content-center">
-            <a href="contactus.html" class="btn-agri-white"><i class="bi bi-envelope"></i> Contact Us</a>
-            <a href="services.html" class="btn-agri-outline" style="color:#fff;border-color:rgba(255,255,255,.4);"><i class="bi bi-arrow-right"></i> View Programs</a>
+            <a href="{{ route('contactus') }}" class="btn-agri-white"><i class="bi bi-envelope"></i> Contact Us</a>
+            <a href="{{ route('services') }}" class="btn-agri-outline" style="color:#fff;border-color:rgba(255,255,255,.4);"><i class="bi bi-arrow-right"></i> View Programs</a>
           </div>
         </div>
       </div>

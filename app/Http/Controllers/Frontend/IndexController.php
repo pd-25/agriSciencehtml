@@ -3,13 +3,21 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\ImpactNumbers;
+use App\Models\Testimonial;
+use App\Models\WhatWeDo;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $whatWeDo = WhatWeDo::all();
+        $impact = ImpactNumbers::get()->first();
+        $about = About::get()->first();
+        $testimonials = Testimonial::get();
+        return view('frontend.index', compact('whatWeDo', 'impact', 'about','testimonials'));
     }
 
     public function about()
