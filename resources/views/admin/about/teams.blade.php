@@ -64,10 +64,16 @@
                                         <span class="text-muted small">{{ Str::limit($item->description, 50) }}</span>
                                     </td>
                                     <td>
-                                        @if($item->social_link)
-                                            <a href="{{ $item->social_link }}" target="_blank" class="btn btn-sm btn-light border text-primary">
-                                                <i class="{{ $item->social_icon ?: 'bi bi-link-45deg' }}"></i>
-                                            </a>
+                                        @if($item->social_link && count($item->social_link) > 0)
+                                            <div class="d-flex gap-1 flex-wrap">
+                                                @foreach($item->social_link as $linkIndex => $link)
+                                                    @if($link)
+                                                        <a href="{{ $link }}" target="_blank" class="btn btn-xs btn-light border text-primary p-1" style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;">
+                                                            <i class="{{ $item->social_icon[$linkIndex] ?? 'bi bi-link-45deg' }}"></i>
+                                                        </a>
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @else
                                             <span class="text-muted small">N/A</span>
                                         @endif
@@ -134,21 +140,31 @@
                         <textarea name="description" class="form-control" rows="3" placeholder="Enter brief description about the member..."></textarea>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-medium small">Social Icon</label>
-                            <select name="social_icon" class="form-select">
-                                <option value="" selected>None</option>
-                                <option value="bi bi-linkedin">LinkedIn</option>
-                                <option value="bi bi-twitter-x">X (Twitter)</option>
-                                <option value="bi bi-facebook">Facebook</option>
-                                <option value="bi bi-instagram">Instagram</option>
-                            </select>
+                    <div class="mb-3">
+                        <label class="form-label fw-medium small">Social Links</label>
+                        <div class="social-links-container">
+                            <div class="row g-2 mb-2 social-row">
+                                <div class="col-md-5">
+                                    <select name="social_icon[]" class="form-select">
+                                        <option value="" selected disabled>Select Icon</option>
+                                        <option value="bi bi-linkedin">LinkedIn</option>
+                                        <option value="bi bi-twitter-x">X (Twitter)</option>
+                                        <option value="bi bi-facebook">Facebook</option>
+                                        <option value="bi bi-instagram">Instagram</option>
+                                        <option value="bi bi-globe">Website</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="url" name="social_link[]" class="form-control" placeholder="https://social-link.com">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-outline-danger btn-sm remove-social-row"><i class="fa fa-trash"></i></button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-medium small">Social Link URL</label>
-                            <input type="url" name="social_link" class="form-control" placeholder="e.g. https://linkedin.com/in/username">
-                        </div>
+                        <button type="button" class="btn btn-outline-primary btn-sm mt-1 add-social-link">
+                            <i class="fa fa-plus me-1"></i> Add Social Link
+                        </button>
                     </div>
 
                     <div class="mb-3">
@@ -194,21 +210,54 @@
                             <textarea name="description" class="form-control" rows="3">{{ $item->description }}</textarea>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-medium small">Social Icon</label>
-                                <select name="social_icon" class="form-select">
-                                    <option value="" {{ !$item->social_icon ? 'selected' : '' }}>None</option>
-                                    <option value="bi bi-linkedin" {{ $item->social_icon == 'bi bi-linkedin' ? 'selected' : '' }}>LinkedIn</option>
-                                    <option value="bi bi-twitter-x" {{ $item->social_icon == 'bi bi-twitter-x' ? 'selected' : '' }}>X (Twitter)</option>
-                                    <option value="bi bi-facebook" {{ $item->social_icon == 'bi bi-facebook' ? 'selected' : '' }}>Facebook</option>
-                                    <option value="bi bi-instagram" {{ $item->social_icon == 'bi bi-instagram' ? 'selected' : '' }}>Instagram</option>
-                                </select>
+                        <div class="mb-3">
+                            <label class="form-label fw-medium small">Social Links</label>
+                            <div class="social-links-container">
+                                @if($item->social_link && count($item->social_link) > 0)
+                                    @foreach($item->social_link as $linkIndex => $link)
+                                        <div class="row g-2 mb-2 social-row">
+                                            <div class="col-md-5">
+                                                <select name="social_icon[]" class="form-select">
+                                                    <option value="" disabled>Select Icon</option>
+                                                    <option value="bi bi-linkedin" {{ ($item->social_icon[$linkIndex] ?? '') == 'bi bi-linkedin' ? 'selected' : '' }}>LinkedIn</option>
+                                                    <option value="bi bi-twitter-x" {{ ($item->social_icon[$linkIndex] ?? '') == 'bi bi-twitter-x' ? 'selected' : '' }}>X (Twitter)</option>
+                                                    <option value="bi bi-facebook" {{ ($item->social_icon[$linkIndex] ?? '') == 'bi bi-facebook' ? 'selected' : '' }}>Facebook</option>
+                                                    <option value="bi bi-instagram" {{ ($item->social_icon[$linkIndex] ?? '') == 'bi bi-instagram' ? 'selected' : '' }}>Instagram</option>
+                                                    <option value="bi bi-globe" {{ ($item->social_icon[$linkIndex] ?? '') == 'bi bi-globe' ? 'selected' : '' }}>Website</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="url" name="social_link[]" class="form-control" value="{{ $link }}" placeholder="https://social-link.com">
+                                            </div>
+                                            <div class="col-md-1">
+                                                <button type="button" class="btn btn-outline-danger btn-sm remove-social-row"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="row g-2 mb-2 social-row">
+                                        <div class="col-md-5">
+                                            <select name="social_icon[]" class="form-select">
+                                                <option value="" selected disabled>Select Icon</option>
+                                                <option value="bi bi-linkedin">LinkedIn</option>
+                                                <option value="bi bi-twitter-x">X (Twitter)</option>
+                                                <option value="bi bi-facebook">Facebook</option>
+                                                <option value="bi bi-instagram">Instagram</option>
+                                                <option value="bi bi-globe">Website</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="url" name="social_link[]" class="form-control" placeholder="https://social-link.com">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button type="button" class="btn btn-outline-danger btn-sm remove-social-row"><i class="fa fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-medium small">Social Link URL</label>
-                                <input type="url" name="social_link" class="form-control" value="{{ $item->social_link }}">
-                            </div>
+                            <button type="button" class="btn btn-outline-primary btn-sm mt-1 add-social-link">
+                                <i class="fa fa-plus me-1"></i> Add Social Link
+                            </button>
                         </div>
 
                         <div class="mb-3">
@@ -255,3 +304,63 @@
     @endforeach
 
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add Social Link Row
+        document.querySelectorAll('.add-social-link').forEach(button => {
+            button.addEventListener('click', function() {
+                const container = this.previousElementSibling;
+                const newRow = document.createElement('div');
+                newRow.className = 'row g-2 mb-2 social-row';
+                newRow.innerHTML = `
+                    <div class="col-md-5">
+                        <select name="social_icon[]" class="form-select">
+                            <option value="" selected disabled>Select Icon</option>
+                            <option value="bi bi-linkedin">LinkedIn</option>
+                            <option value="bi bi-twitter-x">X (Twitter)</option>
+                            <option value="bi bi-facebook">Facebook</option>
+                            <option value="bi bi-instagram">Instagram</option>
+                            <option value="bi bi-globe">Website</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="url" name="social_link[]" class="form-control" placeholder="https://social-link.com">
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-outline-danger btn-sm remove-social-row"><i class="fa fa-trash"></i></button>
+                    </div>
+                `;
+                container.appendChild(newRow);
+                
+                // Attach remove event to new button
+                newRow.querySelector('.remove-social-row').addEventListener('click', function() {
+                    if (container.querySelectorAll('.social-row').length > 1) {
+                        newRow.remove();
+                    } else {
+                        // If it's the only row, just clear it
+                        newRow.querySelector('select').selectedIndex = 0;
+                        newRow.querySelector('input').value = '';
+                    }
+                });
+            });
+        });
+
+        // Delegate remove event for existing rows
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.remove-social-row')) {
+                const row = e.target.closest('.social-row');
+                const container = row.parentElement;
+                if (container.querySelectorAll('.social-row').length > 1) {
+                    row.remove();
+                } else {
+                    // If it's the only row, just clear it
+                    row.querySelector('select').selectedIndex = 0;
+                    row.querySelector('input').value = '';
+                }
+            }
+        });
+    });
+</script>
+@endpush

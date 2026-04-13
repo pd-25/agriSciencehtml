@@ -15,4 +15,9 @@ class Team extends Model
         'social_icon',
         'social_link',
     ];
+
+    protected $casts = [
+        'social_icon' => 'array',
+        'social_link' => 'array',
+    ];
 }

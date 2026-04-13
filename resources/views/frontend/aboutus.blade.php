@@ -145,54 +145,31 @@
         <p class="section-subtitle mx-auto">Passionate experts united by a common goal — transforming agriculture through science and community.</p>
       </div>
       <div class="row g-4 justify-content-center">
+        @foreach ($teams as $team)
         <div class="col-sm-6 col-lg-3 reveal">
           <div class="team-card">
-            <div class="team-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));">VP</div>
-            <h5>Dr. Vikram Patel</h5>
-            <div class="role">Founder & Executive Director</div>
-            <p>Agricultural economist with 20+ years of experience in food policy and rural development.</p>
+            @if($team->image)
+              <div class="team-avatar" style="background-image: url('{{ asset($team->image) }}'); background-size: cover; background-position: center; border: none;"></div>
+            @else
+              <div class="team-avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));">
+                {{ collect(explode(' ', $team->name))->map(function($word) { return strtoupper(substr($word, 0, 1)); })->take(2)->implode('') }}
+              </div>
+            @endif
+            <h5>{{ $team->name }}</h5>
+            <div class="role">{{ $team->designation }}</div>
+            <p>{{ $team->description }}</p>
             <div class="team-social">
-              <a href="#"><i class="bi bi-linkedin"></i></a>
-              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              @if($team->social_link && count($team->social_link) > 0)
+                @foreach($team->social_link as $linkIndex => $link)
+                  @if($link)
+                    <a href="{{ $link }}" target="_blank"><i class="{{ $team->social_icon[$linkIndex] ?? 'bi bi-link-45deg' }}"></i></a>
+                  @endif
+                @endforeach
+              @endif
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-3 reveal">
-          <div class="team-card">
-            <div class="team-avatar" style="background:linear-gradient(135deg,var(--accent),#b07d3d);">LO</div>
-            <h5>Dr. Lena Ochieng</h5>
-            <div class="role">Director of Research</div>
-            <p>Plant biologist specializing in climate-resilient crop development and sustainable intensification.</p>
-            <div class="team-social">
-              <a href="#"><i class="bi bi-linkedin"></i></a>
-              <a href="#"><i class="bi bi-twitter-x"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 reveal">
-          <div class="team-card">
-            <div class="team-avatar" style="background:linear-gradient(135deg,#2196f3,#1565c0);">MC</div>
-            <h5>Marco Chen</h5>
-            <div class="role">Head of Operations</div>
-            <p>Operations leader with expertise in scaling NGO programs across multiple regions and cultures.</p>
-            <div class="team-social">
-              <a href="#"><i class="bi bi-linkedin"></i></a>
-              <a href="#"><i class="bi bi-twitter-x"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 reveal">
-          <div class="team-card">
-            <div class="team-avatar" style="background:linear-gradient(135deg,#9c27b0,#7b1fa2);">AS</div>
-            <h5>Aisha Siddiqui</h5>
-            <div class="role">Community Engagement Lead</div>
-            <p>Social worker dedicated to bridging scientific institutions with grassroots farming communities.</p>
-            <div class="team-social">
-              <a href="#"><i class="bi bi-linkedin"></i></a>
-              <a href="#"><i class="bi bi-twitter-x"></i></a>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>

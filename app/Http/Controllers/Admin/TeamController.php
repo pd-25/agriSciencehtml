@@ -20,8 +20,8 @@ class TeamController extends Controller
             'name' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'social_icon' => 'nullable|string|max:255',
-            'social_link' => 'nullable|url|max:255',
+            'social_icon' => 'nullable|array',
+            'social_link' => 'nullable|array',
         ]);
 
         $data = $request->except('_token', 'image');
@@ -44,8 +44,8 @@ class TeamController extends Controller
             'name' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'social_icon' => 'nullable|string|max:255',
-            'social_link' => 'nullable|url|max:255',
+            'social_icon' => 'nullable|array',
+            'social_link' => 'nullable|array',
         ]);
 
         $team = \App\Models\Team::findOrFail($id);
