@@ -23,14 +23,16 @@
         <p class="section-subtitle mx-auto">From field-level training to policy advocacy, our programs address the full spectrum of agricultural development needs.</p>
       </div>
       <div class="row g-4">
+        @foreach($services as $service)
         <div class="col-md-6 col-lg-4 reveal">
           <div class="icon-card">
-            <div class="icon-circle green"><i class="bi bi-flower1"></i></div>
-            <h5>Sustainable Farming Systems</h5>
-            <p>We help farming communities transition to organic, climate-smart agricultural practices including crop rotation, integrated pest management, and agroforestry techniques that boost yields while preserving soil health.</p>
+            <div class="icon-circle {{ $service->color }}"><i class="{{ $service->icon }}"></i></div>
+            <h5>{{ $service->title }}</h5>
+            <p>{{ $service->description }}</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 reveal">
+        @endforeach
+        <!-- <div class="col-md-6 col-lg-4 reveal">
           <div class="icon-card">
             <div class="icon-circle orange"><i class="bi bi-mortarboard"></i></div>
             <h5>Farmer Training Academy</h5>
@@ -64,7 +66,7 @@
             <h5>Policy Research & Advocacy</h5>
             <p>We produce evidence-based policy briefs, engage with governments and multilateral bodies, and advocate for agricultural policies that prioritize smallholder welfare and environmental sustainability.</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -116,14 +118,16 @@
         <p class="section-subtitle mx-auto">A systematic, community-centered process that ensures lasting results.</p>
       </div>
       <div class="row g-4">
+        @foreach($approaches as $approach)
         <div class="col-md-6 col-lg-3 reveal">
-          <div class="icon-card" style="border-top:4px solid var(--primary);">
-            <div style="font-family:'Inter',sans-serif;font-size:2.5rem;font-weight:800;color:var(--primary);opacity:.2;margin-bottom:10px;">01</div>
-            <h5>Assess & Listen</h5>
-            <p>We begin every engagement with thorough community assessments, listening to farmers' needs, challenges, and existing knowledge systems.</p>
+          <div class="icon-card" style="border-top:4px solid {{$approach->color_var}};">
+            <div style="font-family:'Inter',sans-serif;font-size:2.5rem;font-weight:800;color:{{$approach->color_var}};opacity:.2;margin-bottom:10px;">0{{ $loop->iteration }}</div>
+            <h5>{{ $approach->title }}</h5>
+            <p>{{ $approach->description }}</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 reveal">
+        @endforeach
+        <!-- <div class="col-md-6 col-lg-3 reveal">
           <div class="icon-card" style="border-top:4px solid var(--primary-light);">
             <div style="font-family:'Inter',sans-serif;font-size:2.5rem;font-weight:800;color:var(--primary-light);opacity:.2;margin-bottom:10px;">02</div>
             <h5>Research & Design</h5>
@@ -143,7 +147,7 @@
             <h5>Measure & Scale</h5>
             <p>Rigorous M&E ensures accountability. Successful interventions are documented and scaled to reach more communities.</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -151,29 +155,33 @@
   <!-- Section 4: Impact Stats -->
   <section class="impact-section section-padding">
     <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="section-badge" style="background:rgba(255,255,255,.12);color:#fff;">Our Impact</span>
+        <h2 class="section-title" style="color:#fff;">Numbers That Tell Our Story</h2>
+      </div>
       <div class="row g-4">
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="50000" data-suffix="+">0</h2>
-            <p>Farmers Trained</p>
+            <h2 data-count="{{ $impact->farmers_empowered }}" data-suffix="+">0</h2>
+            <p>Farmers Empowered</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="45" data-suffix="%">0</h2>
-            <p>Avg. Income Increase</p>
+            <h2 data-count="{{ $impact->research_projects }}" data-suffix="+">0</h2>
+            <p>Research Projects</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="180" data-suffix="+">0</h2>
-            <p>Irrigation Systems Built</p>
+            <h2 data-count="{{ $impact->countries_active }}">0</h2>
+            <p>Countries Active</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="40" data-suffix="+">0</h2>
-            <p>Policy Briefs Published</p>
+            <h2 data-count="{{ $impact->partner_organizations }}" data-suffix="+">0</h2>
+            <p>Partner Organizations</p>
           </div>
         </div>
       </div>
@@ -181,23 +189,54 @@
   </section>
 
   <!-- Section 5: Testimonial -->
-  <section class="section-padding bg-light-custom">
+  <section class="section-padding">
     <div class="container">
-      <div class="row justify-content-center reveal">
-        <div class="col-lg-8 text-center">
-          <span class="section-badge">Success Story</span>
-          <div class="testimonial-card mx-auto" style="border-left:none;border-bottom:4px solid var(--primary);max-width:700px;">
+      <div class="text-center mb-5 reveal">
+        <span class="section-badge">Voices from the Field</span>
+        <h2 class="section-title">What Our Community Says</h2>
+      </div>
+      <div class="row g-4">
+        @foreach ($testimonials as $testimonial)
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="testimonial-card">
             <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p style="font-size:1.1rem;">"Before AgriScience, I was losing 30% of my harvest to poor storage. After completing their training, I built a low-cost storage unit and connected with a cooperative. My annual income has nearly doubled."</p>
-            <div class="author justify-content-center">
-              <div class="author-avatar">JN</div>
-              <div class="text-start">
-                <h6>Joseph Nkrumah</h6>
-                <span>Maize Farmer, Ghana</span>
+            <p>{{ $testimonial->feedback }}</p>
+            <div class="author">
+              <div class="author-avatar"><img src="{{ asset($testimonial->image) }}" alt=""></div>
+              <div>
+                <h6>{{ $testimonial->name }}</h6>
+                <span>{{ $testimonial->designation }}</span>
               </div>
             </div>
           </div>
         </div>
+        @endforeach
+        <!-- <div class="col-md-6 col-lg-4 reveal">
+          <div class="testimonial-card">
+            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>"The water management solutions introduced by AgriScience saved our village during the worst drought in decades. Their approach is truly life-changing."</p>
+            <div class="author">
+              <div class="author-avatar" style="background:linear-gradient(135deg,var(--accent),#b07d3d);">AM</div>
+              <div>
+                <h6>Amina Mwangi</h6>
+                <span>Community Leader, Kenya</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="testimonial-card">
+            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>"As a research partner, I've seen firsthand how AgriScience translates lab findings into practical tools that farmers can actually use. Remarkable work."</p>
+            <div class="author">
+              <div class="author-avatar" style="background:linear-gradient(135deg,#2196f3,#1565c0);">DS</div>
+              <div>
+                <h6>Dr. Sarah Chen</h6>
+                <span>Agricultural Scientist, Australia</span>
+              </div>
+            </div>
+          </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -210,8 +249,8 @@
           <h2 class="section-title">Ready to Transform Your Community?</h2>
           <p class="mb-4 opacity-75">Let's discuss how AgriScience programs can be tailored to your region's unique agricultural challenges.</p>
           <div class="d-flex flex-wrap gap-3 justify-content-center">
-            <a href="contactus.html" class="btn-agri-white"><i class="bi bi-envelope"></i> Contact Us</a>
-            <a href="research-and-insights.html" class="btn-agri-outline" style="color:#fff;border-color:rgba(255,255,255,.4);"><i class="bi bi-journal-text"></i> View Research</a>
+            <a href="{{ route('contactus') }}" class="btn-agri-white"><i class="bi bi-envelope"></i> Contact Us</a>
+            <a href="{{ route('researches') }}" class="btn-agri-outline" style="color:#fff;border-color:rgba(255,255,255,.4);"><i class="bi bi-journal-text"></i> View Research</a>
           </div>
         </div>
       </div>

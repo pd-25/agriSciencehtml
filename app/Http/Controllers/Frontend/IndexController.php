@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Approach;
 use App\Models\ImpactNumbers;
 use App\Models\Journey;
 use App\Models\OurPurpose;
+use App\Models\ResearchNumber;
+use App\Models\Service;
 use App\Models\Team;
 use App\Models\Testimonial;
 use App\Models\WhatWeDo;
@@ -49,6 +52,10 @@ class IndexController extends Controller
 
     public function services()
     {
-        return view('frontend.services');
+        $services = Service::all();
+        $approaches = Approach::all();
+        $impact = ImpactNumbers::get()->first();
+        $testimonials = Testimonial::get();
+        return view('frontend.services', compact('services', 'approaches','impact','testimonials'));
     }
 }
