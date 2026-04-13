@@ -55,7 +55,8 @@ class IndexController extends Controller
 
     public function contactus()
     {
-        return view('frontend.contactus');
+        $about = About::get()->first();
+        return view('frontend.contactus', compact('about'));
     }
 
     public function researches()

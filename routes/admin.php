@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\WhatWeDoController;
+use App\Http\Controllers\Admin\InquiryController;
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -159,5 +161,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Blogs
         Route::resource('blogs', BlogController::class);
+
+        // Inquiries
+        Route::get('/inquiries', [InquiryController::class, 'index'])->name('inquiries.index');
+        Route::get('/inquiries/{id}', [InquiryController::class, 'show'])->name('inquiries.show');
+        Route::delete('/inquiries/{id}', [InquiryController::class, 'destroy'])->name('inquiries.destroy');
     });
 });

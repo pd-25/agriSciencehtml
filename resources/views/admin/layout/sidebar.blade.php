@@ -99,10 +99,10 @@
                 style="font-size: 0.7rem; letter-spacing: 1px;">Leads</p>
 
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.members.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
-                    href="{{ route('admin.members.index') }}">
-                    <i class="fa fa-headset me-3" style="width: 20px;"></i>
-                    <span class="fw-medium">Inquiries/ Leads</span>
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.inquiries.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.inquiries.index') }}">
+                    <i class="fa fa-envelope-open me-3" style="width: 20px;"></i>
+                    <span class="fw-medium">Leads/Inquiries</span>
                 </a>
             </li>
 

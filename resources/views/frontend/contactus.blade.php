@@ -76,7 +76,7 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label fw-500">Phone Number</label>
-                <input type="tel" name="phone" class="form-control form-control-agri @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="+91 98765 43210">
+                <input type="number" name="phone" class="form-control form-control-agri @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="9876543210">
                 @error('phone') <div class="invalid-feedback">{{ $message }}</div> @enderror
               </div>
               <div class="col-md-6">
