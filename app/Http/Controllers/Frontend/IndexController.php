@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Blog;
 use App\Models\Approach;
 use App\Models\ImpactNumbers;
 use App\Models\Journey;
@@ -39,7 +40,9 @@ class IndexController extends Controller
 
     public function articles()
     {
-        return view('frontend.articles');
+        $featuredBlog = Blog::where('is_featured', true)->first();
+        $blogs = Blog::where('is_featured', false)->orderBy('date', 'desc')->get();
+        return view('frontend.articles', compact('featuredBlog', 'blogs'));
     }
 
     public function contactus()
