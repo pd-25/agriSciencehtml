@@ -175,7 +175,7 @@
   </section>
 
   <!-- Section 5: Partners -->
-  <section class="section-padding">
+  <!-- <section class="section-padding">
     <div class="container text-center reveal">
       <span class="section-badge">Our Partners</span>
       <h2 class="section-title mb-5">Trusted By Leading Organizations</h2>
@@ -188,7 +188,7 @@
         <div class="partner-logo">Gates Foundation</div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- CTA -->
   <section class="cta-section section-padding">
@@ -197,7 +197,7 @@
         <div class="col-lg-7">
           <h2 class="section-title">Want to Be Part of the Change?</h2>
           <p class="mb-4 opacity-75">Join our team of researchers, volunteers, and advocates working toward a food-secure future.</p>
-          <a href="contactus.html" class="btn-agri-white"><i class="bi bi-envelope"></i> Get in Touch</a>
+          <a href="{{ route('contactus') }}" class="btn-agri-white"><i class="bi bi-envelope"></i> Get in Touch</a>
         </div>
       </div>
     </div>
