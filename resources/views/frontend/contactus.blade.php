@@ -54,35 +54,48 @@
         <div class="col-lg-7 reveal">
           <h3 class="mb-2">Send Us a Message</h3>
           <p class="text-muted mb-4">Fill out the form and our team will get back to you within 24 hours.</p>
-          <form id="contactForm">
+          @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+              <i class="bi bi-check-circle me-2"></i> {{ session('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
+
+          <form action="{{ route('inquiry.store') }}" method="POST">
+            @csrf
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label fw-500">Full Name</label>
-                <input type="text" name="name" class="form-control form-control-agri" placeholder="John Doe" required>
+                <input type="text" name="name" class="form-control form-control-agri @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="John Doe">
+                @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
               </div>
               <div class="col-md-6">
                 <label class="form-label fw-500">Email Address</label>
-                <input type="email" name="email" class="form-control form-control-agri" placeholder="john@example.com" required>
+                <input type="email" name="email" class="form-control form-control-agri @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="john@example.com">
+                @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
               </div>
               <div class="col-md-6">
                 <label class="form-label fw-500">Phone Number</label>
-                <input type="tel" name="phone" class="form-control form-control-agri" placeholder="+91 98765 43210">
+                <input type="tel" name="phone" class="form-control form-control-agri @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="+91 98765 43210">
+                @error('phone') <div class="invalid-feedback">{{ $message }}</div> @enderror
               </div>
               <div class="col-md-6">
                 <label class="form-label fw-500">Subject</label>
-                <select name="subject" class="form-control form-control-agri" required>
-                  <option value="" disabled selected>Select a topic</option>
-                  <option>Partnership Inquiry</option>
-                  <option>Volunteer Opportunity</option>
-                  <option>Donation & Funding</option>
-                  <option>Training Programs</option>
-                  <option>Media & Press</option>
-                  <option>General Inquiry</option>
+                <select name="subject" class="form-control form-control-agri @error('subject') is-invalid @enderror">
+                  <option value="" disabled {{ old('subject') ? '' : 'selected' }}>Select a topic</option>
+                  <option {{ old('subject') == 'Partnership Inquiry' ? 'selected' : '' }}>Partnership Inquiry</option>
+                  <option {{ old('subject') == 'Volunteer Opportunity' ? 'selected' : '' }}>Volunteer Opportunity</option>
+                  <option {{ old('subject') == 'Donation & Funding' ? 'selected' : '' }}>Donation & Funding</option>
+                  <option {{ old('subject') == 'Training Programs' ? 'selected' : '' }}>Training Programs</option>
+                  <option {{ old('subject') == 'Media & Press' ? 'selected' : '' }}>Media & Press</option>
+                  <option {{ old('subject') == 'General Inquiry' ? 'selected' : '' }}>General Inquiry</option>
                 </select>
+                @error('subject') <div class="invalid-feedback">{{ $message }}</div> @enderror
               </div>
               <div class="col-12">
                 <label class="form-label fw-500">Your Message</label>
-                <textarea name="message" class="form-control form-control-agri" rows="5" placeholder="Tell us how we can help..." required></textarea>
+                <textarea name="message" class="form-control form-control-agri @error('message') is-invalid @enderror" rows="5" placeholder="Tell us how we can help...">{{ old('message') }}</textarea>
+                @error('message') <div class="invalid-feedback">{{ $message }}</div> @enderror
               </div>
               <div class="col-12">
                 <button type="submit" class="btn-agri"><i class="bi bi-send"></i> Send Message</button>

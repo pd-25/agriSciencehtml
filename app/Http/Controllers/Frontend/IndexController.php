@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\Inquiry;
 use App\Models\Approach;
 use App\Models\ImpactNumbers;
 use App\Models\Journey;
@@ -72,5 +73,26 @@ class IndexController extends Controller
         $impact = ImpactNumbers::get()->first();
         $testimonials = Testimonial::get();
         return view('frontend.services', compact('services', 'approaches','impact','testimonials'));
+    }
+
+    public function inquiryStore(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ], [
+            'name.required' => 'Please provide your full name.',
+            'email.required' => 'We need your email address to get back to you.',
+            'email.email' => 'Please provide a valid email address.',
+            'subject.required' => 'Please select a subject for your inquiry.',
+            'message.required' => 'The message field cannot be empty.',
+        ]);
+
+        Inquiry::create($validated);
+
+        return back()->with('success', 'Your inquiry has been submitted successfully! We will get back to you soon.');
     }
 }
