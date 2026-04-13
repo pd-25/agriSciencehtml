@@ -20,9 +20,9 @@
       <div class="row align-items-center g-5">
         <div class="col-lg-6 reveal">
           <div class="about-visual">
-            <div class="main-img img-placeholder" style="height:400px;"><i class="bi bi-image"></i></div>
+            <div class="main-img img-placeholder" style="height:400px;"><img src="{{ asset($about->image) }}" alt=""></div>
             <div class="experience-badge">
-              <h3>12+</h3>
+              <h3>{{ $about->experience_years }}+</h3>
               <p>Years of Impact</p>
             </div>
           </div>

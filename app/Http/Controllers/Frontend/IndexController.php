@@ -22,7 +22,8 @@ class IndexController extends Controller
 
     public function about()
     {
-        return view('frontend.aboutus');
+        $about = About::get()->first();
+        return view('frontend.aboutus', compact('about'));
     }
 
     public function articles()
