@@ -65,14 +65,16 @@
         <h2 class="section-title">Mission, Vision & Values</h2>
       </div>
       <div class="row g-4">
+        @foreach ($purposes as $purpose)
         <div class="col-md-4 reveal">
           <div class="icon-card">
-            <div class="icon-circle green"><i class="bi bi-bullseye"></i></div>
-            <h5>Our Mission</h5>
-            <p>To advance sustainable agriculture through scientific research, community education, and technology transfer — empowering farming communities to thrive in a changing climate.</p>
+            <div class="icon-circle {{ $purpose->color }}"><i class="{{ $purpose->icon }}"></i></div>
+            <h5>{{ $purpose->title }}</h5>
+            <p>{{ $purpose->description }}</p>
           </div>
         </div>
-        <div class="col-md-4 reveal">
+        @endforeach
+        <!-- <div class="col-md-4 reveal">
           <div class="icon-card">
             <div class="icon-circle orange"><i class="bi bi-eye"></i></div>
             <h5>Our Vision</h5>
@@ -85,7 +87,7 @@
             <h5>Our Values</h5>
             <p>Integrity in research, respect for indigenous knowledge, commitment to community ownership, environmental stewardship, and transparency in everything we do.</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -101,12 +103,14 @@
         </div>
         <div class="col-lg-7 reveal">
           <div class="timeline">
+            @foreach ($journeys as $journey)
             <div class="timeline-item">
-              <span class="year">2014</span>
-              <h5>Founded in New Delhi</h5>
-              <p>Launched with a pilot soil health project reaching 200 farmers across 5 villages in Uttar Pradesh.</p>
+              <span class="year">{{ $journey->year }}</span>
+              <h5>{{ $journey->title }}</h5>
+              <p>{{ $journey->description }}</p>
             </div>
-            <div class="timeline-item">
+            @endforeach
+            <!-- <div class="timeline-item">
               <span class="year">2016</span>
               <h5>Expanded to East Africa</h5>
               <p>Opened offices in Kenya and Tanzania, introducing drought-resistant crop varieties to 3,000 farmers.</p>
@@ -125,7 +129,7 @@
               <span class="year">2024</span>
               <h5>Global Recognition</h5>
               <p>Received the UN Food Systems Champion Award. Now active across 28 countries with 200+ staff members.</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

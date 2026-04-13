@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\ImpactNumbers;
+use App\Models\Journey;
+use App\Models\OurPurpose;
 use App\Models\Testimonial;
 use App\Models\WhatWeDo;
 use Illuminate\Http\Request;
@@ -23,7 +25,9 @@ class IndexController extends Controller
     public function about()
     {
         $about = About::get()->first();
-        return view('frontend.aboutus', compact('about'));
+        $purposes = OurPurpose::get();
+        $journeys = Journey::get();
+        return view('frontend.aboutus', compact('about','purposes','journeys'));
     }
 
     public function articles()
