@@ -16,7 +16,9 @@ use App\Models\ResearchNumber;
 use App\Models\Service;
 use App\Models\Team;
 use App\Models\Testimonial;
+use App\Models\FAQ;
 use App\Models\WhatWeDo;
+
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -56,7 +58,8 @@ class IndexController extends Controller
     public function contactus()
     {
         $about = About::get()->first();
-        return view('frontend.contactus', compact('about'));
+        $faqs = FAQ::orderBy('order', 'asc')->get();
+        return view('frontend.contactus', compact('about', 'faqs'));
     }
 
     public function researches()

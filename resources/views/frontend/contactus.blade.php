@@ -23,21 +23,37 @@
           <div class="contact-card">
             <div class="icon-circle green mx-auto"><i class="bi bi-geo-alt"></i></div>
             <h6>Our Office</h6>
-            <p>42 Green Avenue, Sector 15<br>New Delhi, India 110001</p>
+            <p>{!! nl2br(e($about->address)) !!}</p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 reveal">
           <div class="contact-card">
             <div class="icon-circle orange mx-auto"><i class="bi bi-envelope"></i></div>
             <h6>Email Us</h6>
-            <p>info@agriscience.org<br>partnerships@agriscience.org</p>
+            <p>
+              @if($about->email && count($about->email) > 0)
+                @foreach($about->email as $email)
+                  {{ $email }}@if(!$loop->last)<br>@endif
+                @endforeach
+              @else
+                info@agriscience.org
+              @endif
+            </p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 reveal">
           <div class="contact-card">
             <div class="icon-circle teal mx-auto"><i class="bi bi-telephone"></i></div>
             <h6>Call Us</h6>
-            <p>+91 11 2345 6789<br>+91 98765 43210</p>
+            <p>
+              @if($about->phone && count($about->phone) > 0)
+                @foreach($about->phone as $phone)
+                  {{ $phone }}@if(!$loop->last)<br>@endif
+                @endforeach
+              @else
+                +91 11 2345 6789
+              @endif
+            </p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 reveal">
@@ -120,27 +136,20 @@
         <h2 class="section-title">Our Regional Offices</h2>
       </div>
       <div class="row g-4">
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="icon-card text-start">
-            <h5><i class="bi bi-geo-alt-fill text-primary-custom me-2"></i>South Asia Hub</h5>
-            <p class="mb-2">42 Green Avenue, Sector 15<br>New Delhi, India 110001</p>
-            <small class="text-muted"><i class="bi bi-envelope me-1"></i> southasia@agriscience.org</small>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="icon-card text-start">
-            <h5><i class="bi bi-geo-alt-fill text-accent me-2"></i>East Africa Hub</h5>
-            <p class="mb-2">Kenyatta Avenue, Suite 305<br>Nairobi, Kenya 00100</p>
-            <small class="text-muted"><i class="bi bi-envelope me-1"></i> eastafrica@agriscience.org</small>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="icon-card text-start">
-            <h5><i class="bi bi-geo-alt-fill me-2" style="color:#2196f3;"></i>Southeast Asia Hub</h5>
-            <p class="mb-2">88 Nguyen Hue Blvd, District 1<br>Ho Chi Minh City, Vietnam</p>
-            <small class="text-muted"><i class="bi bi-envelope me-1"></i> seasia@agriscience.org</small>
-          </div>
-        </div>
+        @if($about->regional_offices && count($about->regional_offices) > 0)
+          @foreach($about->regional_offices as $office)
+            <div class="col-md-6 col-lg-4 reveal">
+              <div class="icon-card text-start">
+                <h5><i class="bi bi-geo-alt-fill text-primary-custom me-2"></i>{{ $office['name'] }}</h5>
+                <p class="mb-2">{!! nl2br(e($office['address'])) !!}</p>
+                <small class="text-muted"><i class="bi bi-envelope me-1"></i> {{ $office['email'] }}</small>
+              </div>
+            </div>
+          @endforeach
+        @else
+          <!-- Fallback or empty state -->
+          <div class="col-12 text-center text-muted">No regional offices configured.</div>
+        @endif
       </div>
     </div>
   </section>
@@ -155,38 +164,24 @@
             <h2 class="section-title">Frequently Asked Questions</h2>
           </div>
           <div class="accordion" id="faqAccordion">
-            <div class="accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm">
-              <h2 class="accordion-header">
-                <button class="accordion-button fw-500" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">How can I volunteer with AgriScience?</button>
-              </h2>
-              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">We welcome volunteers from all backgrounds. Fill out the contact form above selecting "Volunteer Opportunity" or email us at volunteer@agriscience.org. We offer both field and remote volunteer positions across our global offices.</div>
+            @foreach($faqs as $faq)
+              <div class="accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm">
+                <h2 class="accordion-header">
+                  <button class="accordion-button {{ $loop->first ? '' : 'collapsed' }} fw-500" type="button" data-bs-toggle="collapse" data-bs-target="#faq{{ $faq->id }}">
+                    {{ $faq->question }}
+                  </button>
+                </h2>
+                <div id="faq{{ $faq->id }}" class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-muted">
+                    {{ $faq->answer }}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed fw-500" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">How can my organization partner with AgriScience?</button>
-              </h2>
-              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">We partner with NGOs, universities, government agencies, and private companies. Reach out via partnerships@agriscience.org with details about your organization and proposed collaboration areas.</div>
-              </div>
-            </div>
-            <div class="accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed fw-500" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Do you accept donations?</button>
-              </h2>
-              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">Yes! AgriScience is a registered non-profit. Donations are tax-deductible in most jurisdictions. You can contribute through our website or contact our fundraising team for corporate giving options.</div>
-              </div>
-            </div>
-            <div class="accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed fw-500" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Can farmers directly request AgriScience's services?</button>
-              </h2>
-              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body text-muted">Absolutely. Individual farmers and farming cooperatives can reach out to our regional offices. We assess community needs and design programs accordingly. Our services are provided free of cost to qualifying communities.</div>
-              </div>
-            </div>
+            @endforeach
+
+            @if($faqs->isEmpty())
+              <div class="text-center text-muted">No FAQs available at this time.</div>
+            @endif
           </div>
         </div>
       </div>
