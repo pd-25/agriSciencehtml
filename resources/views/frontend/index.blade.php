@@ -45,11 +45,11 @@
         <div class="col-lg-6">
           <div class="hero-image-wrapper">
             <div class="hero-img-grid">
-              <div class="hero-img-main img-placeholder"><i class="bi bi-image"></i></div>
-              <div class="hero-img-secondary img-placeholder"><i class="bi bi-image"></i></div>
+              <div class="hero-img-main img-placeholder"><img src="{{ asset('./images/homehero.png') }}" alt="" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <div class="hero-img-secondary img-placeholder" style="overflow:hidden;"><img src="{{ asset('./images/homeher2.webp') }}" alt="" style="width: 100%; height: 100%; object-fit: cover;"></div>
             </div>
             <div class="hero-float-card card-1">
-              <div class="icon-box green"><i class="bi bi-leaf"></i></div>
+              <div class="icon-box green"><i class="bi bi-heart"></i></div>
               <div>
                 <h6>Eco Farming</h6>
                 <p>100% Organic Methods</p>
@@ -183,7 +183,7 @@
       <div class="row align-items-center g-5">
         <div class="col-lg-6 reveal">
           <div class="about-visual">
-            <div class="main-img img-placeholder" style="height:380px;"><img src="{{ asset($about->image) }}" alt=""></div>
+            <div class="main-img img-placeholder" style="height:380px; overflow:hidden;"><img src="{{ asset($about->image) }}" alt="" style="width: 100%; height: 100%; object-fit: cover;"></div>
             <div class="experience-badge">
               <h3>{{ $about->experience_years }}+</h3>
               <p>Years of Service</p>
