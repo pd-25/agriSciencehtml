@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
-          <div class="footer-brand">Agri<span class="brand-text">Science</span></div>
+          <div class="footer-brand">Agricscience <span class="brand-text">Ghana</span></div>
           <p>Empowering communities through sustainable agriculture, scientific research, and innovative farming solutions since 2014.</p>
           <div class="footer-social">
             <a href="#"><i class="bi bi-facebook"></i></a>
@@ -16,17 +16,17 @@
         <div class="col-6 col-lg-2">
           <h5>Quick Links</h5>
           <ul class="footer-links">
-            <li><a href="home.html"><i class="bi bi-chevron-right"></i> Home</a></li>
-            <li><a href="aboutus.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
-            <li><a href="services.html"><i class="bi bi-chevron-right"></i> Services</a></li>
-            <li><a href="contactus.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
+            <li><a href="{{route('home')}}"><i class="bi bi-chevron-right"></i> Home</a></li>
+            <li><a href="{{route('about')}}"><i class="bi bi-chevron-right"></i> About Us</a></li>
+            <li><a href="{{route('services')}}"><i class="bi bi-chevron-right"></i> Services</a></li>
+            <li><a href="{{route('contactus')}}"><i class="bi bi-chevron-right"></i> Contact</a></li>
           </ul>
         </div>
         <div class="col-6 col-lg-2">
           <h5>Resources</h5>
           <ul class="footer-links">
-            <li><a href="research-and-insights.html"><i class="bi bi-chevron-right"></i> Research</a></li>
-            <li><a href="article-and-blogs.html"><i class="bi bi-chevron-right"></i> Blog</a></li>
+            <li><a href="{{route('researches')}}"><i class="bi bi-chevron-right"></i> Research</a></li>
+            <li><a href="{{route('articles')}}"><i class="bi bi-chevron-right"></i> Blog</a></li>
             <li><a href="#"><i class="bi bi-chevron-right"></i> Publications</a></li>
             <li><a href="#"><i class="bi bi-chevron-right"></i> FAQ</a></li>
           </ul>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="mb-0">&copy; 2026 AgriScience. All rights reserved. | Designed for a sustainable future.</p>
+        <p class="mb-0">&copy; 2026 AgricScience. All rights reserved. | Designed for a sustainable future.</p>
       </div>
     </div>
   </footer>

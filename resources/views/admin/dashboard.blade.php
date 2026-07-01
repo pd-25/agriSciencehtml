@@ -6,7 +6,7 @@
 <div class="row mb-4 animate__animated animate__fadeIn">
     <div class="col-md-12">
         <h3 class="fw-bold mb-1">Welcome back, Admin! 👋</h3>
-        <p class="text-muted">Here's what's happening at South End School today.</p>
+        <p class="text-muted">Here's what's happening at Agricscience Ghana today.</p>
     </div>
 </div>
 

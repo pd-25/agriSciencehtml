@@ -8,7 +8,7 @@
       <p>Stories from the field, expert insights, and the latest in sustainable agriculture.</p>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
           <li class="breadcrumb-item active">Blog</li>
         </ol>
       </nav>

@@ -57,7 +57,7 @@
       <div class="text-center mb-5 reveal">
         <span class="section-badge">Focus Areas</span>
         <h2 class="section-title">Our Research Pillars</h2>
-        <p class="section-subtitle mx-auto">AgriScience research spans five critical domains that together address the full complexity of agricultural sustainability.</p>
+        <p class="section-subtitle mx-auto">Agricscience Ghana research spans five critical domains that together address the full complexity of agricultural sustainability.</p>
       </div>
       <div class="row g-4">
         @foreach($researches as $item)

@@ -33,6 +33,11 @@ Route::get('/config-cache', function () {
     return 'Configuration cached successfully!';
 });
 
+Route::get('/config-clear', function () {
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    return 'Configuration cleared successfully!';
+});
+
 Route::get('/optimize-clear', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
     return 'Optimization cleared successfully!';

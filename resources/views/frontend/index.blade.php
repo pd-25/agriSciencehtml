@@ -18,7 +18,7 @@
             <i class="bi bi-arrow-up-right"></i>
           </div>
           <h1 class="hero-title">Cultivating a <span class="highlight">Sustainable</span> Future for Agriculture</h1>
-          <p class="hero-text">AgriScience partners with farming communities worldwide to advance scientific research, promote sustainable practices, and build resilient food systems for future generations.</p>
+          <p class="hero-text">Agricscience Ghana partners with farming communities worldwide to advance scientific research, promote sustainable practices, and build resilient food systems for future generations.</p>
           <div class="hero-buttons">
             <a href="aboutus.html" class="btn-agri"><i class="bi bi-play-circle"></i> Discover Our Mission</a>
             <a href="services.html" class="btn-agri-outline"><i class="bi bi-grid-3x3-gap"></i> Our Programs</a>
@@ -191,7 +191,7 @@
           </div>
         </div>
         <div class="col-lg-6 reveal">
-          <span class="section-badge">About AgriScience</span>
+          <span class="section-badge">About Agricscience Ghana</span>
           <h2 class="section-title">{{ $about->title }}</h2>
           <p class="text-muted mb-4">{{ $about -> description }}</p>
           <ul class="about-list">
@@ -231,7 +231,7 @@
         <!-- <div class="col-md-6 col-lg-4 reveal">
           <div class="testimonial-card">
             <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"The water management solutions introduced by AgriScience saved our village during the worst drought in decades. Their approach is truly life-changing."</p>
+            <p>"The water management solutions introduced by Agricscience Ghana saved our village during the worst drought in decades. Their approach is truly life-changing."</p>
             <div class="author">
               <div class="author-avatar" style="background:linear-gradient(135deg,var(--accent),#b07d3d);">AM</div>
               <div>
@@ -244,7 +244,7 @@
         <div class="col-md-6 col-lg-4 reveal">
           <div class="testimonial-card">
             <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"As a research partner, I've seen firsthand how AgriScience translates lab findings into practical tools that farmers can actually use. Remarkable work."</p>
+            <p>"As a research partner, I've seen firsthand how Agricscience Ghana translates lab findings into practical tools that farmers can actually use. Remarkable work."</p>
             <div class="author">
               <div class="author-avatar" style="background:linear-gradient(135deg,#2196f3,#1565c0);">DS</div>
               <div>
@@ -264,7 +264,7 @@
       <div class="row justify-content-center reveal">
         <div class="col-lg-8">
           <h2 class="section-title">Join Us in Building a<br>Sustainable Food Future</h2>
-          <p class="mb-4 opacity-75" style="font-size:1.1rem;">Whether you're a farmer, researcher, donor, or volunteer — there's a place for you in the AgriScience community.</p>
+          <p class="mb-4 opacity-75" style="font-size:1.1rem;">Whether you're a farmer, researcher, donor, or volunteer — there's a place for you in the Agricscience Ghana community.</p>
           <div class="d-flex flex-wrap gap-3 justify-content-center">
             <a href="{{ route('contactus') }}" class="btn-agri-white"><i class="bi bi-envelope"></i> Contact Us</a>
             <a href="{{ route('services') }}" class="btn-agri-outline" style="color:#fff;border-color:rgba(255,255,255,.4);"><i class="bi bi-arrow-right"></i> View Programs</a>

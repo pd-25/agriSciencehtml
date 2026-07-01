@@ -74,7 +74,7 @@
                                 "Agriculture is our wisest pursuit, because it will in the end contribute most to real wealth, good morals, and happiness."
                             </blockquote>
                             
-                            <p>Moving forward, AgriScience remains committed to providing the data and tools necessary for farmers worldwide to thrive. Our research into drought-resistant varieties is already showing promising results in field studies across Sub-Saharan Africa.</p>
+                            <p>Moving forward, Agricscience Ghana remains committed to providing the data and tools necessary for farmers worldwide to thrive. Our research into drought-resistant varieties is already showing promising results in field studies across Sub-Saharan Africa.</p>
                         @endif
                     </div>
 

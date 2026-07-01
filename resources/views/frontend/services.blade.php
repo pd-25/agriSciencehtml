@@ -215,7 +215,7 @@
         <!-- <div class="col-md-6 col-lg-4 reveal">
           <div class="testimonial-card">
             <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"The water management solutions introduced by AgriScience saved our village during the worst drought in decades. Their approach is truly life-changing."</p>
+            <p>"The water management solutions introduced by Agricscience Ghana saved our village during the worst drought in decades. Their approach is truly life-changing."</p>
             <div class="author">
               <div class="author-avatar" style="background:linear-gradient(135deg,var(--accent),#b07d3d);">AM</div>
               <div>
@@ -228,7 +228,7 @@
         <div class="col-md-6 col-lg-4 reveal">
           <div class="testimonial-card">
             <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p>"As a research partner, I've seen firsthand how AgriScience translates lab findings into practical tools that farmers can actually use. Remarkable work."</p>
+            <p>"As a research partner, I've seen firsthand how Agricscience Ghana translates lab findings into practical tools that farmers can actually use. Remarkable work."</p>
             <div class="author">
               <div class="author-avatar" style="background:linear-gradient(135deg,#2196f3,#1565c0);">DS</div>
               <div>
@@ -248,7 +248,7 @@
       <div class="row justify-content-center reveal">
         <div class="col-lg-7">
           <h2 class="section-title">Ready to Transform Your Community?</h2>
-          <p class="mb-4 opacity-75">Let's discuss how AgriScience programs can be tailored to your region's unique agricultural challenges.</p>
+          <p class="mb-4 opacity-75">Let's discuss how Agricscience Ghana programs can be tailored to your region's unique agricultural challenges.</p>
           <div class="d-flex flex-wrap gap-3 justify-content-center">
             <a href="{{ route('contactus') }}" class="btn-agri-white"><i class="bi bi-envelope"></i> Contact Us</a>
             <a href="{{ route('researches') }}" class="btn-agri-outline" style="color:#fff;border-color:rgba(255,255,255,.4);"><i class="bi bi-journal-text"></i> View Research</a>

@@ -4,7 +4,7 @@
  <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>About AgriScience</h1>
+      <h1>About Agricscience Ghana</h1>
       <p>Our story, mission, and the people driving agricultural change worldwide.</p>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -31,7 +31,7 @@
         <div class="col-lg-6 reveal">
           <span class="section-badge">Our Story</span>
           <h2 class="section-title">From a Small Idea to a Global Movement</h2>
-          <p class="text-muted mb-3">AgriScience was founded in 2014 by a group of agricultural scientists and community organizers who believed that the gap between lab research and farm reality could be closed. What started as a pilot project in rural India — training 200 farmers on soil health management — has grown into a global organization operating across 28 countries.</p>
+          <p class="text-muted mb-3">Agricscience Ghana was founded in 2014 by a group of agricultural science enthusiasts and farming community organizers who believed that the gap between lab research and farming reality could be closed. What started as a pilot project in rural Ghana— training farmers on soil health management and scientific farming best practices — has grown into a national battle cry organization.</p>
           <p class="text-muted mb-4">Today, we work at the intersection of science, technology, and traditional farming wisdom. We believe that sustainable agriculture isn't just about feeding people — it's about building resilient communities, protecting biodiversity, and creating economic opportunity for the world's most vulnerable populations.</p>
           <div class="row g-3">
             <div class="col-6">
@@ -94,48 +94,29 @@
   </section>
 
   <!-- Section 3: Timeline / Milestones -->
-  <section class="section-padding">
-    <div class="container">
-      <div class="row g-5">
-        <div class="col-lg-5 reveal">
-          <span class="section-badge">Our Journey</span>
-          <h2 class="section-title">Key Milestones</h2>
-          <p class="text-muted">A decade of growth, learning, and impact across the agricultural landscape.</p>
-        </div>
-        <div class="col-lg-7 reveal">
-          <div class="timeline">
-            @foreach ($journeys as $journey)
-            <div class="timeline-item">
-              <span class="year">{{ $journey->year }}</span>
-              <h5>{{ $journey->title }}</h5>
-              <p>{{ $journey->description }}</p>
-            </div>
-            @endforeach
-            <!-- <div class="timeline-item">
-              <span class="year">2016</span>
-              <h5>Expanded to East Africa</h5>
-              <p>Opened offices in Kenya and Tanzania, introducing drought-resistant crop varieties to 3,000 farmers.</p>
-            </div>
-            <div class="timeline-item">
-              <span class="year">2018</span>
-              <h5>Research Lab Established</h5>
-              <p>Inaugurated our applied research laboratory in Bangalore, partnering with 12 universities globally.</p>
-            </div>
-            <div class="timeline-item">
-              <span class="year">2021</span>
-              <h5>Digital Agriculture Initiative</h5>
-              <p>Launched mobile-based advisory platform serving 25,000+ farmers with real-time crop management data.</p>
-            </div>
-            <div class="timeline-item">
-              <span class="year">2024</span>
-              <h5>Global Recognition</h5>
-              <p>Received the UN Food Systems Champion Award. Now active across 28 countries with 200+ staff members.</p>
-            </div> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!--<section class="section-padding">-->
+  <!--  <div class="container">-->
+  <!--    <div class="row g-5">-->
+  <!--      <div class="col-lg-5 reveal">-->
+  <!--        <span class="section-badge">Our Journey</span>-->
+  <!--        <h2 class="section-title">Key Milestones</h2>-->
+  <!--        <p class="text-muted">A decade of growth, learning, and impact across the agricultural landscape.</p>-->
+  <!--      </div>-->
+  <!--      <div class="col-lg-7 reveal">-->
+  <!--        <div class="timeline">-->
+  <!--          @foreach ($journeys as $journey)-->
+  <!--          <div class="timeline-item">-->
+  <!--            <span class="year">{{ $journey->year }}</span>-->
+  <!--            <h5>{{ $journey->title }}</h5>-->
+  <!--            <p>{{ $journey->description }}</p>-->
+  <!--          </div>-->
+  <!--          @endforeach-->
+            
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</section>-->
 
   <!-- Section 4: Team -->
   <section class="section-padding bg-light-custom">

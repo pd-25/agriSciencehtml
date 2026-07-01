@@ -36,7 +36,7 @@
                   {{ $email }}@if(!$loop->last)<br>@endif
                 @endforeach
               @else
-                info@agriscience.org
+                info@agricscienceghana.com
               @endif
             </p>
           </div>

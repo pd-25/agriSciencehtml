@@ -1,7 +1,7 @@
 <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-agri fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="home.html"><span class="brand-icon"><i class="bi bi-leaf"></i></span>Agri<span class="brand-text">Science</span></a>
+      <a class="navbar-brand" href="{{route('home')}}"><span class="brand-icon"><i class="bi bi-leaf"></i></span>Agricscience <span class="brand-text">Ghana</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
