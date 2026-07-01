@@ -11,7 +11,8 @@ class Service extends Model
         'title',
         'slug',
         'description',
-        'icon',
+        'image',
+        'youtube_link',
         'color',
     ];
 }

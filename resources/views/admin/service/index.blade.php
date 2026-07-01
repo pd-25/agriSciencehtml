@@ -36,7 +36,7 @@
                         <thead class="table-light">
                             <tr>
                                 <th>No.</th>
-                                <th>Icon</th>
+                                <th>Image</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Color</th>
@@ -48,10 +48,11 @@
                                 <tr>
                                     <td>{{ $whatWeDos->firstItem() + $index }}</td>
                                     <td>
-                                        <div class="bg-light p-2 rounded d-inline-block text-center"
-                                            style="width: 40px; height: 40px; color: black;">
-                                            <i class="{{ $item->icon }} mt-1 text-dark"></i>
-                                        </div>
+                                        @if($item->image)
+                                            <img src="{{ asset($item->image) }}" alt="Image" style="width: 40px; height: 40px; object-fit: cover; border-radius: 5px;">
+                                        @else
+                                            <span class="text-muted small">No Image</span>
+                                        @endif
                                     </td>
                                     <td class="fw-medium">{{ $item->title }}</td>
                                     <td class="text-muted small">
@@ -109,7 +110,7 @@
     <!-- Add Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <form action="{{ route('admin.service.store') }}" method="POST" class="modal-content border-0 shadow-lg">
+            <form action="{{ route('admin.service.store') }}" method="POST" enctype="multipart/form-data" class="modal-content border-0 shadow-lg">
                 @csrf
                 <div class="modal-header border-bottom-0 pb-0">
                     <h5 class="modal-title fw-bold">Add New Item</h5>
@@ -125,11 +126,16 @@
                         <textarea name="description" class="form-control" rows="4" required
                             placeholder="Enter detailed description..."></textarea>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-medium small">YouTube Link</label>
+                        <input type="url" name="youtube_link" class="form-control" placeholder="https://www.youtube.com/embed/...">
+                        <small class="text-muted d-block mt-1">Provide the embedded YouTube URL</small>
+                    </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label class="form-label fw-medium small">Icon Class</label>
-                            <input type="text" name="icon" class="form-control" placeholder="e.g., fa fa-leaf">
-                            <small class="text-muted d-block mt-1">FontAwesome class (e.g. 'fa fa-solid fa-star')</small>
+                            <label class="form-label fw-medium small">Image</label>
+                            <input type="file" name="image" class="form-control" accept="image/*">
+                            <small class="text-muted d-block mt-1">Upload a service image</small>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label fw-medium small">Color</label>
@@ -158,7 +164,7 @@
         <!-- Edit Modal -->
         <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <form action="{{ route('admin.service.update', $item->id) }}" method="POST" class="modal-content border-0 shadow-lg text-start">
+                <form action="{{ route('admin.service.update', $item->id) }}" method="POST" enctype="multipart/form-data" class="modal-content border-0 shadow-lg text-start">
                     @csrf
                     @method('PUT')
                     <div class="modal-header border-bottom-0 pb-0">
@@ -174,11 +180,20 @@
                             <label class="form-label fw-medium small">Description <span class="text-danger">*</span></label>
                             <textarea name="description" class="form-control" rows="4" required>{{ $item->description }}</textarea>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-medium small">YouTube Link</label>
+                            <input type="url" name="youtube_link" class="form-control" placeholder="https://www.youtube.com/embed/..." value="{{ $item->youtube_link }}">
+                            <small class="text-muted d-block mt-1">Provide the embedded YouTube URL</small>
+                        </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-medium small">Icon Class</label>
-                                <input type="text" name="icon" class="form-control" placeholder="e.g., fa fa-leaf" value="{{ $item->icon }}">
-                                <small class="text-muted d-block mt-1">FontAwesome class (e.g. 'fa fa-solid fa-star')</small>
+                                <label class="form-label fw-medium small">Image</label>
+                                <input type="file" name="image" class="form-control" accept="image/*">
+                                @if($item->image)
+                                    <div class="mt-2">
+                                        <img src="{{ asset($item->image) }}" alt="Current Image" style="height: 40px; border-radius: 4px;">
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-medium small">Color</label>
