@@ -78,24 +78,28 @@
       <div class="row g-4">
         @foreach($services as $service)
         <div class="col-md-6 col-lg-4 reveal mb-4">
-          <div class="icon-card d-flex flex-column h-100">
-            <div class="icon-circle {{ $service->color }} mx-auto">
+          <div class="blog-card h-100">
+            <div class="card-img-top" style="overflow: hidden; background: #f8f9f0;">
               @if($service->image)
-                <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" style="width: 50%; height: 50%; object-fit: contain;">
+                <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" style="width:100%; height:100%; object-fit:cover;">
               @else
-                <i class="{{ $service->icon ?? 'bi bi-card-image' }}"></i>
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:var(--primary); font-size: 2.5rem; opacity: 0.5;">
+                  <i class="bi bi-card-image"></i>
+                </div>
               @endif
             </div>
-            <h5 class="text-center">{{ $service->title }}</h5>
-            <p class="text-center">{{ $service->description }}</p>
-            @if($service->youtube_link)
-              <div class="mt-auto text-center pt-4">
-                <a href="#" class="video-btn-modern {{ $service->color }}" data-bs-toggle="modal" data-bs-target="#youtubeModal{{ $service->id }}">
-                  <span class="play-icon"><i class="bi bi-play-fill" style="font-size: 1.2rem; margin-left: 2px;"></i></span>
-                  <span>Watch Video</span>
-                </a>
-              </div>
-            @endif
+            <div class="card-body text-center d-flex flex-column">
+              <h5 class="card-title">{{ $service->title }}</h5>
+              <p class="card-text">{{ Str::limit($service->description, 120) }}</p>
+              @if($service->youtube_link)
+                <div class="mt-auto pt-3">
+                  <a href="#" class="video-btn-modern {{ $service->color }}" data-bs-toggle="modal" data-bs-target="#youtubeModal{{ $service->id }}">
+                    <span class="play-icon"><i class="bi bi-play-fill" style="font-size: 1.2rem; margin-left: 2px;"></i></span>
+                    <span>Watch Video</span>
+                  </a>
+                </div>
+              @endif
+            </div>
           </div>
         </div>
 
