@@ -6,18 +6,12 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: rgba(45, 106, 79, 0.08); /* Faded primary color */
     padding: 6px 16px 6px 6px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    color: var(--primary);
     transition: var(--transition);
     font-size: 0.9rem;
-  }
-  .video-btn-modern:hover {
-    background: var(--primary);
-    color: var(--white);
   }
   .video-btn-modern .play-icon {
     display: flex;
@@ -26,15 +20,38 @@
     width: 34px;
     height: 34px;
     background: var(--white);
-    color: var(--primary);
     border-radius: 50%;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: var(--transition);
   }
   .video-btn-modern:hover .play-icon {
     transform: scale(1.05);
-    color: var(--primary);
   }
+
+  /* Color variations */
+  .video-btn-modern.green { background: rgba(45,106,79,.1); color: var(--primary); }
+  .video-btn-modern.green .play-icon { color: var(--primary); }
+  .video-btn-modern.green:hover { background: var(--primary); color: var(--white); }
+
+  .video-btn-modern.orange { background: rgba(212,163,115,.15); color: var(--accent); }
+  .video-btn-modern.orange .play-icon { color: var(--accent); }
+  .video-btn-modern.orange:hover { background: var(--accent); color: var(--white); }
+
+  .video-btn-modern.teal { background: rgba(0,150,136,.1); color: #009688; }
+  .video-btn-modern.teal .play-icon { color: #009688; }
+  .video-btn-modern.teal:hover { background: #009688; color: var(--white); }
+
+  .video-btn-modern.blue { background: rgba(33,150,243,.1); color: #2196f3; }
+  .video-btn-modern.blue .play-icon { color: #2196f3; }
+  .video-btn-modern.blue:hover { background: #2196f3; color: var(--white); }
+
+  .video-btn-modern.purple { background: rgba(156,39,176,.1); color: #9c27b0; }
+  .video-btn-modern.purple .play-icon { color: #9c27b0; }
+  .video-btn-modern.purple:hover { background: #9c27b0; color: var(--white); }
+
+  .video-btn-modern.red { background: rgba(244,67,54,.1); color: #f44336; }
+  .video-btn-modern.red .play-icon { color: #f44336; }
+  .video-btn-modern.red:hover { background: #f44336; color: var(--white); }
 </style>
 <!-- Page Header -->
   <section class="page-header">
@@ -60,22 +77,24 @@
       </div>
       <div class="row g-4">
         @foreach($services as $service)
-        <div class="col-md-6 col-lg-4 reveal">
-          <div class="icon-card">
-            <div class="icon-circle {{ $service->color }}">
+        <div class="col-md-6 col-lg-4 reveal mb-4">
+          <div class="icon-card d-flex flex-column h-100">
+            <div class="icon-circle {{ $service->color }} mx-auto">
               @if($service->image)
                 <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" style="width: 50%; height: 50%; object-fit: contain;">
               @else
                 <i class="{{ $service->icon ?? 'bi bi-card-image' }}"></i>
               @endif
             </div>
-            <h5>{{ $service->title }}</h5>
-            <p>{{ $service->description }}</p>
+            <h5 class="text-center">{{ $service->title }}</h5>
+            <p class="text-center">{{ $service->description }}</p>
             @if($service->youtube_link)
-              <a href="#" class="video-btn-modern mt-4" data-bs-toggle="modal" data-bs-target="#youtubeModal{{ $service->id }}">
-                <span class="play-icon"><i class="bi bi-play-fill" style="font-size: 1.2rem; margin-left: 2px;"></i></span>
-                <span>Watch Video</span>
-              </a>
+              <div class="mt-auto text-center pt-4">
+                <a href="#" class="video-btn-modern {{ $service->color }}" data-bs-toggle="modal" data-bs-target="#youtubeModal{{ $service->id }}">
+                  <span class="play-icon"><i class="bi bi-play-fill" style="font-size: 1.2rem; margin-left: 2px;"></i></span>
+                  <span>Watch Video</span>
+                </a>
+              </div>
             @endif
           </div>
         </div>
