@@ -1,6 +1,41 @@
 @extends('frontend.layout.main')
 @section('title', 'Our Services & Programs')
 @section('content')
+<style>
+  .video-btn-modern {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(45, 106, 79, 0.08); /* Faded primary color */
+    padding: 6px 16px 6px 6px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--primary);
+    transition: var(--transition);
+    font-size: 0.9rem;
+  }
+  .video-btn-modern:hover {
+    background: var(--primary);
+    color: var(--white);
+  }
+  .video-btn-modern .play-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: var(--white);
+    color: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: var(--transition);
+  }
+  .video-btn-modern:hover .play-icon {
+    transform: scale(1.05);
+    color: var(--primary);
+  }
+</style>
 <!-- Page Header -->
   <section class="page-header">
     <div class="container">
@@ -27,11 +62,41 @@
         @foreach($services as $service)
         <div class="col-md-6 col-lg-4 reveal">
           <div class="icon-card">
-            <div class="icon-circle {{ $service->color }}"><i class="{{ $service->icon }}"></i></div>
+            <div class="icon-circle {{ $service->color }}">
+              @if($service->image)
+                <img src="{{ asset($service->image) }}" alt="{{ $service->title }}" style="width: 50%; height: 50%; object-fit: contain;">
+              @else
+                <i class="{{ $service->icon ?? 'bi bi-card-image' }}"></i>
+              @endif
+            </div>
             <h5>{{ $service->title }}</h5>
             <p>{{ $service->description }}</p>
+            @if($service->youtube_link)
+              <a href="#" class="video-btn-modern mt-4" data-bs-toggle="modal" data-bs-target="#youtubeModal{{ $service->id }}">
+                <span class="play-icon"><i class="bi bi-play-fill" style="font-size: 1.2rem; margin-left: 2px;"></i></span>
+                <span>Watch Video</span>
+              </a>
+            @endif
           </div>
         </div>
+
+        @if($service->youtube_link)
+        <!-- Modal -->
+        <div class="modal fade" id="youtubeModal{{ $service->id }}" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark">
+              <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body p-0">
+                <div class="ratio ratio-16x9">
+                  <iframe src="{{ $service->youtube_link }}" title="YouTube video" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endif
         @endforeach
         <!-- <div class="col-md-6 col-lg-4 reveal">
           <div class="icon-card">
