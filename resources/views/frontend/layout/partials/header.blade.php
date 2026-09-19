@@ -12,6 +12,7 @@
           <li class="nav-item"><a class="nav-link {{Route::is('services') ? 'active' : ''}}" href="{{route('services')}}">Services</a></li>
           <li class="nav-item"><a class="nav-link {{Route::is('researches') ? 'active' : ''}}" href="{{route('researches')}}">Research</a></li>
           <li class="nav-item"><a class="nav-link {{Route::is('articles') ? 'active' : ''}}" href="{{route('articles')}}">Blog</a></li>
+          <li class="nav-item"><a class="nav-link {{Route::is('gallery') || Route::is('gallery.show') ? 'active' : ''}}" href="{{route('gallery')}}">Gallery</a></li>
           <li class="nav-item"><a class="nav-link {{Route::is('contactus') ? 'active' : ''}}" href="{{route('contactus')}}">Contact</a></li>
         </ul>
         <a href="{{route('contactus')}}" class="nav-cta"><i class="bi bi-arrow-right"></i> Get Involved</a>

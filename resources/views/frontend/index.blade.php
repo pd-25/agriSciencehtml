@@ -258,7 +258,43 @@
     </div>
   </section>
 
-  <!-- Section 6: CTA -->
+  <!-- Section 6: Gallery -->
+  @if($galleries->isNotEmpty())
+  <section class="section-padding bg-light-custom">
+    <div class="container">
+      <div class="row align-items-end g-4 mb-5 reveal">
+        <div class="col-lg-8">
+          <span class="section-badge">Our Gallery</span>
+          <h2 class="section-title mb-2">Moments from the Field</h2>
+          <p class="section-subtitle mb-0">Glimpses of the farmers, researchers and communities we work alongside every day.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="{{ route('gallery') }}" class="btn-agri-outline"><i class="bi bi-images"></i> View All Galleries</a>
+        </div>
+      </div>
+
+      <div class="gallery-slider reveal" data-gallery-slider role="region" aria-label="Photo galleries" tabindex="0">
+        <div class="gallery-viewport">
+          <div class="gallery-track">
+            @foreach($galleries as $gallery)
+            <div class="gallery-slide">
+              @include('frontend.partials.gallery-card', ['gallery' => $gallery])
+            </div>
+            @endforeach
+          </div>
+        </div>
+
+        <div class="gallery-controls">
+          <button class="gallery-nav prev" type="button" aria-label="Previous gallery"><i class="bi bi-arrow-left"></i></button>
+          <div class="gallery-dots"></div>
+          <button class="gallery-nav next" type="button" aria-label="Next gallery"><i class="bi bi-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+  @endif
+
+  <!-- Section 7: CTA -->
   <section class="cta-section section-padding">
     <div class="container position-relative" style="z-index:1;">
       <div class="row justify-content-center reveal">

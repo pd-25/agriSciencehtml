@@ -17,6 +17,7 @@ use App\Models\Service;
 use App\Models\Team;
 use App\Models\Testimonial;
 use App\Models\FAQ;
+use App\Models\Gallery;
 use App\Models\WhatWeDo;
 
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class IndexController extends Controller
         $impact = ImpactNumbers::get()->first();
         $about = About::get()->first();
         $testimonials = Testimonial::get();
-        return view('frontend.index', compact('whatWeDo', 'impact', 'about','testimonials'));
+        $galleries = Gallery::withCount('images')->latest()->latest('id')->take(10)->get();
+        return view('frontend.index', compact('whatWeDo', 'impact', 'about', 'testimonials', 'galleries'));
     }
 
     public function about()
@@ -53,6 +55,25 @@ class IndexController extends Controller
         $blog = Blog::where('slug', $slug)->firstOrFail();
         $recentBlogs = Blog::where('id', '!=', $blog->id)->orderBy('date', 'desc')->take(3)->get();
         return view('frontend.blog_details', compact('blog', 'recentBlogs'));
+    }
+
+    public function gallery()
+    {
+        $galleries = Gallery::withCount('images')->latest()->latest('id')->paginate(12);
+        return view('frontend.gallery', compact('galleries'));
+    }
+
+    public function galleryShow($id)
+    {
+        $gallery = Gallery::with('images')->findOrFail($id);
+        $otherGalleries = Gallery::withCount('images')
+            ->where('id', '!=', $gallery->id)
+            ->latest()
+            ->latest('id')
+            ->take(3)
+            ->get();
+
+        return view('frontend.gallery_details', compact('gallery', 'otherGalleries'));
     }
 
     public function contactus()

@@ -13,6 +13,8 @@ Route::get('/about', [IndexController::class, 'about'])->name('about');
 Route::get('/articles', [IndexController::class, 'articles'])->name('articles');
 Route::get('/articles/{slug}', [IndexController::class, 'blogShow'])->name('blogs.show');
 Route::get('/contactus', [IndexController::class, 'contactus'])->name('contactus');
+Route::get('/gallery', [IndexController::class, 'gallery'])->name('gallery');
+Route::get('/gallery/{id}', [IndexController::class, 'galleryShow'])->name('gallery.show');
 Route::post('/contactus', [IndexController::class, 'inquiryStore'])->name('inquiry.store');
 Route::get('/researches', [IndexController::class, 'researches'])->name('researches');
 Route::get('/services', [IndexController::class, 'services'])->name('services');
