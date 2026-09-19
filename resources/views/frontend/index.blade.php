@@ -151,25 +151,25 @@
       <div class="row g-4">
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="{{ $impact->farmers_empowered }}" data-suffix="+">0</h2>
+            <h2 data-count="{{ $impact?->farmers_empowered }}" data-suffix="+">0</h2>
             <p>Farmers Empowered</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="{{ $impact->research_projects }}" data-suffix="+">0</h2>
+            <h2 data-count="{{ $impact?->research_projects }}" data-suffix="+">0</h2>
             <p>Research Projects</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="{{ $impact->countries_active }}">0</h2>
+            <h2 data-count="{{ $impact?->countries_active }}">0</h2>
             <p>Countries Active</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 reveal">
           <div class="stat-box">
-            <h2 data-count="{{ $impact->partner_organizations }}" data-suffix="+">0</h2>
+            <h2 data-count="{{ $impact?->partner_organizations }}" data-suffix="+">0</h2>
             <p>Partner Organizations</p>
           </div>
         </div>
