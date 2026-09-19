@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\FAQController;
+use App\Http\Controllers\Admin\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -161,6 +162,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Blogs
         Route::resource('blogs', BlogController::class);
+
+        // Gallery
+        Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+        Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+        Route::post('/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+        Route::get('/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
+        Route::put('/gallery/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+        Route::delete('/gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+        Route::delete('/gallery-image/{id}', [GalleryController::class, 'destroyImage'])->name('gallery.image.destroy');
 
         // Inquiries
         Route::get('/inquiries', [InquiryController::class, 'index'])->name('inquiries.index');

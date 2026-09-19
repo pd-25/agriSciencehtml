@@ -96,6 +96,17 @@
             </li>
 
             <p class="text-uppercase small fw-bold text-muted px-3 mt-4 mb-2"
+                style="font-size: 0.7rem; letter-spacing: 1px;">Gallery</p>
+
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center p-3 rounded-4 {{ Route::is('admin.gallery.*') ? 'active bg-primary bg-opacity-10 text-primary' : 'text-muted' }}"
+                    href="{{ route('admin.gallery.index') }}">
+                    <i class="fa fa-images me-3" style="width: 20px;"></i>
+                    <span class="fw-medium">Gallery</span>
+                </a>
+            </li>
+
+            <p class="text-uppercase small fw-bold text-muted px-3 mt-4 mb-2"
                 style="font-size: 0.7rem; letter-spacing: 1px;">Leads</p>
 
             <li class="nav-item">
