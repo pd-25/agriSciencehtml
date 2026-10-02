@@ -8,7 +8,7 @@
       <p>We'd love to hear from you — whether you're a farmer, researcher, donor, or volunteer.</p>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
           <li class="breadcrumb-item active">Contact</li>
         </ol>
       </nav>

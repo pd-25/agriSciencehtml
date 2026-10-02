@@ -8,7 +8,7 @@
       <p>Peer-reviewed papers, field reports, and data-driven insights powering agricultural transformation.</p>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
           <li class="breadcrumb-item active">Research & Insights</li>
         </ol>
       </nav>

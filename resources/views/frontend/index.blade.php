@@ -20,8 +20,8 @@
           <h1 class="hero-title">Cultivating a <span class="highlight">Sustainable</span> Future for Agriculture</h1>
           <p class="hero-text">Agricscience Ghana partners with farming communities worldwide to advance scientific research, promote sustainable practices, and build resilient food systems for future generations.</p>
           <div class="hero-buttons">
-            <a href="aboutus.html" class="btn-agri"><i class="bi bi-play-circle"></i> Discover Our Mission</a>
-            <a href="services.html" class="btn-agri-outline"><i class="bi bi-grid-3x3-gap"></i> Our Programs</a>
+            <a href="{{ route('about') }}" class="btn-agri"><i class="bi bi-play-circle"></i> Discover Our Mission</a>
+            <a href="{{ route('services') }}" class="btn-agri-outline"><i class="bi bi-grid-3x3-gap"></i> Our Programs</a>
           </div>
           <div class="hero-stats">
             <div class="stat">

@@ -60,7 +60,7 @@
       <p>Comprehensive agricultural solutions designed to create lasting impact at every level.</p>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
           <li class="breadcrumb-item active">Services</li>
         </ol>
       </nav>
@@ -189,7 +189,7 @@
             <li><i class="bi bi-check2"></i> Post-harvest handling & storage techniques</li>
             <li><i class="bi bi-check2"></i> Mentorship from experienced agricultural scientists</li>
           </ul>
-          <a href="contactus.html" class="btn-agri mt-3"><i class="bi bi-arrow-right"></i> Enroll Your Community</a>
+          <a href="{{ route('contactus') }}" class="btn-agri mt-3"><i class="bi bi-arrow-right"></i> Enroll Your Community</a>
         </div>
         <div class="col-lg-6 reveal">
           <div class="img-placeholder" style="height:450px;border-radius:var(--radius-lg);"><i class="bi bi-image"></i></div>

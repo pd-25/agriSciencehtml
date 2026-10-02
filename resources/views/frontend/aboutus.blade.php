@@ -8,7 +8,7 @@
       <p>Our story, mission, and the people driving agricultural change worldwide.</p>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
           <li class="breadcrumb-item active">About Us</li>
         </ol>
       </nav>
