@@ -60,7 +60,8 @@
                     </div>
 
                     <!-- Content -->
-                    <div class="article-body reveal" style="font-size: 1.1rem; line-height: 1.8; color: var(--gray-700);">
+                    <link href="{{ asset('css/blog-content.css') }}" rel="stylesheet">
+                    <div class="article-body blog-rich-content reveal" style="font-size: 1.1rem; line-height: 1.8; color: var(--gray-700);">
                         {!! $blog->content !!}
                         
                         {{-- If content is empty, show a sample placeholder --}}

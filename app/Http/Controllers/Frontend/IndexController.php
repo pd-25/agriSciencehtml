@@ -46,7 +46,8 @@ class IndexController extends Controller
     public function articles()
     {
         $featuredBlog = Blog::where('is_featured', true)->first();
-        $blogs = Blog::where('is_featured', false)->orderBy('date', 'desc')->get();
+        $blogs = Blog::orderBy('date', 'desc')->get();
+        // where('is_featured', false)->
         return view('frontend.articles', compact('featuredBlog', 'blogs'));
     }
 

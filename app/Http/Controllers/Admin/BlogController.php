@@ -108,6 +108,23 @@ class BlogController extends Controller
         return redirect()->route('admin.blogs.index')->with('success', 'Blog post updated successfully.');
     }
 
+    /**
+     * Handle image uploads from the rich text editor in the blog content field.
+     */
+    public function uploadContentImage(Request $request)
+    {
+        $request->validate([
+            'upload' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+        ]);
+
+        $imageName = 'content_' . time() . '_' . uniqid() . '.' . $request->upload->extension();
+        $request->upload->move(public_path('images/blogs/content'), $imageName);
+
+        return response()->json([
+            'url' => asset('images/blogs/content/' . $imageName),
+        ]);
+    }
+
     public function destroy($id)
     {
         $blog = Blog::findOrFail($id);

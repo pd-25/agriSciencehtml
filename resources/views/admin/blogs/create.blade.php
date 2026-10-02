@@ -35,7 +35,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label fw-medium small">Content <span class="text-danger">*</span></label>
-                                <textarea name="content" id="editor" class="form-control" rows="15" required placeholder="Write your content here..."></textarea>
+                                <textarea name="content" id="editor" class="form-control" rows="15" placeholder="Write your content here...">{{ old('content') }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -101,3 +101,5 @@
         </div>
     </div>
 @endsection
+
+@include('admin.blogs.partials.editor')

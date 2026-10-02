@@ -161,6 +161,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
         // Blogs
+        Route::post('/blogs/upload-image', [BlogController::class, 'uploadContentImage'])->name('blogs.upload-image');
         Route::resource('blogs', BlogController::class);
 
         // Gallery

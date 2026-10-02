@@ -2,6 +2,10 @@
 
 @section('title', 'Preview Blog')
 
+@push('styles')
+    <link href="{{ asset('css/blog-content.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
     <div class="row mb-4 animate__animated animate__fadeIn">
         <div class="col-md-12 d-flex justify-content-between align-items-center">
@@ -62,8 +66,8 @@
                         </div>
                     @endif
 
-                    <div class="blog-content text-muted" style="font-size: 1.1rem; line-height: 1.8;">
-                        {!! nl2br(e($blog->content)) !!}
+                    <div class="blog-content blog-rich-content text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                        {!! $blog->content === strip_tags($blog->content) ? nl2br(e($blog->content)) : $blog->content !!}
                     </div>
                 </div>
             </div>
